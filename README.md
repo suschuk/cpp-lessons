@@ -1,4 +1,4 @@
-probe
-=====
+cpp-lessons
+===========
 
-The first repo on github. For testing.
+This repo will be used for remote communications with students.
