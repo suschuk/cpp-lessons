@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Date", "Date\Date.vcxproj", "{EDFC09BB-407C-4A3E-8646-DC8A30D9F3BC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DateApp", "DateApp\DateApp.vcxproj", "{FFDF84A5-33D4-4D98-BE01-72D0A0EC95C9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TimeSpan", "TimeSpan\TimeSpan.vcxproj", "{1F904F47-39B7-4A71-8E0D-AE34131C4181}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EDFC09BB-407C-4A3E-8646-DC8A30D9F3BC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EDFC09BB-407C-4A3E-8646-DC8A30D9F3BC}.Debug|Win32.Build.0 = Debug|Win32
+		{EDFC09BB-407C-4A3E-8646-DC8A30D9F3BC}.Release|Win32.ActiveCfg = Release|Win32
+		{EDFC09BB-407C-4A3E-8646-DC8A30D9F3BC}.Release|Win32.Build.0 = Release|Win32
+		{FFDF84A5-33D4-4D98-BE01-72D0A0EC95C9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FFDF84A5-33D4-4D98-BE01-72D0A0EC95C9}.Debug|Win32.Build.0 = Debug|Win32
+		{FFDF84A5-33D4-4D98-BE01-72D0A0EC95C9}.Release|Win32.ActiveCfg = Release|Win32
+		{FFDF84A5-33D4-4D98-BE01-72D0A0EC95C9}.Release|Win32.Build.0 = Release|Win32
+		{1F904F47-39B7-4A71-8E0D-AE34131C4181}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1F904F47-39B7-4A71-8E0D-AE34131C4181}.Debug|Win32.Build.0 = Debug|Win32
+		{1F904F47-39B7-4A71-8E0D-AE34131C4181}.Release|Win32.ActiveCfg = Release|Win32
+		{1F904F47-39B7-4A71-8E0D-AE34131C4181}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
