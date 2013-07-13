@@ -7,7 +7,7 @@ SafeArray::~SafeArray()
 }
 SafeArray::SafeArray(int size)
 {
-	arr_ = new Data[size];
+	arr_ = new Data[size];  // you should clean your memory
 	size_ = size;
 }
 SafeArray::SafeArray(const SafeArray&  sa)
