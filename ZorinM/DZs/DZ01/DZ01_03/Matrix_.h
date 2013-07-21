@@ -25,7 +25,7 @@ public:
 	Matrix_ operator * (const  Matrix_&);
 	friend ostream& operator << (ostream&, const Matrix_&);
 	Matrix_& operator = (const Matrix_&);
-	Matrix_& operator -- (); // matrix transpose
+	Matrix_& operator -- (); // matrix transpose  // why decrement means transpose
 
 };
 

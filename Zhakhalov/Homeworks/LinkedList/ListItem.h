@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Point.h"
+#include "DataItem.h"
 
-typedef Point DataItem;
+
 
 class ListItem
 {

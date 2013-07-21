@@ -32,7 +32,7 @@ void ListCheck(int nElements)
 
 	pickMs = clock() - pickMs;
 
-	List.front();
+	List.front();   // ??? -- you get the value of first element but doesn't use it. Why?
 
 	popMs = clock();
 	while(List.size())
@@ -50,7 +50,7 @@ void ListCheck(int nElements)
 
 void ArrayCheck()
 {
-	const int nElements = 100000;
+	const int nElements = 100000;    // It would be a good idea to make nElements global const
 
 	int pushMs = 0;
 	int pickMs = 0;
@@ -90,9 +90,9 @@ void DequeCheck(int nElements)
 	pushMs = clock() - pushMs;
 
 	deque<int>::iterator it = Deque.begin();
-	advance(it, nElements / 2);
+//	advance(it, nElements / 2);                     // Random access iterator, you can use *(it + nElements/2)
 
-	int val = *it;
+	int val = *(it + nElements/2);
 
 	pickMs = clock() - pickMs;
 
@@ -128,7 +128,7 @@ void VectorCeck(int nElements)
 	int val = Vector[nElements / 2];
 	pickMs = clock() - pickMs;
 
-	Vector.front();
+	Vector.front();   // see above
 
 	popMs = clock();
 	while(Vector.size())

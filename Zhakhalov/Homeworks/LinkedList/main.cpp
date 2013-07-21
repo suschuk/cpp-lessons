@@ -1,4 +1,7 @@
 
+
+
+
 #include "LinkedList.h"
 #include "StackFIFO.h"
 #include "StackLIFO.h"
@@ -14,7 +17,7 @@ void main()
 
 	list.GetItem();
 
-	/*list.Add(p1);
+	list.Add(p1);
 	list.Add(p2);
 	list.Add(p3);
 
@@ -37,7 +40,7 @@ void main()
 
 	std::cout << list.GetItem().X() << std::endl;
 	std::cout << list.GetItem().Y() << std::endl << std::endl;
-
+/*
 	LinkedList list2;
 
 	list2.Add(Point(99,55));
@@ -105,6 +108,6 @@ void main()
 	StackL.Add(Point(55,11));
 
 	Point p1 = StackL.Pop();
-	Point p2 = StackL.Pick();*/
-
+	Point p2 = StackL.Pick();
+*/
 }

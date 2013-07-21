@@ -2,7 +2,7 @@
 
 void main()
 {
-	Time t(85867);
+	Time t(100085867);
 
 	t = t + Time(45);
 

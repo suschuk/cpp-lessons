@@ -19,7 +19,7 @@ public:
 	Matrix(unsigned width, unsigned height);
 	~Matrix(void);
 
-	void SetVal(float Val,unsigned X, unsigned Y);
+	void SetVal(float Val, unsigned X, unsigned Y);
 	void Transpone();
 
 	float GetVal(unsigned X, unsigned Y) const;

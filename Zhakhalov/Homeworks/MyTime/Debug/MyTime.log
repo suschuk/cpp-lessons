@@ -1,9 +1,14 @@
-﻿Построение начато 20.07.2013 14:14:40.
-     1>Проект "G:\STEP_Materials\C++_Projects\Homeworks\MyTime\MyTime.vcxproj" в узле 2 (целевые объекты clean).
-     1>_PrepareForClean:
-         Файл "Debug\MyTime.lastbuildstate" удаляется.
-     1>Построение проекта "G:\STEP_Materials\C++_Projects\Homeworks\MyTime\MyTime.vcxproj" завершено (целевые объекты clean).
+﻿Build started 21.07.2013 12:22:47.
+Project "C:\suschuk\cpp-lessons\Zhakhalov\Homeworks\MyTime\MyTime.vcxproj" on node 2 (Build target(s)).
+ClCompile:
+  C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+  main.cpp
+Link:
+  C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\suschuk\cpp-lessons\Zhakhalov\Homeworks\Debug\MyTime.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\suschuk\cpp-lessons\Zhakhalov\Homeworks\Debug\MyTime.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\suschuk\cpp-lessons\Zhakhalov\Homeworks\Debug\MyTime.lib" /MACHINE:X86 Debug\main.obj
+  Debug\Time.obj
+  MyTime.vcxproj -> C:\suschuk\cpp-lessons\Zhakhalov\Homeworks\Debug\MyTime.exe
+Done Building Project "C:\suschuk\cpp-lessons\Zhakhalov\Homeworks\MyTime\MyTime.vcxproj" (Build target(s)).
 
-Построение успешно завершено.
+Build succeeded.
 
-Затраченное время: 00:00:00.01
+Time Elapsed 00:00:03.07

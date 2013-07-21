@@ -14,12 +14,12 @@ private:
 public:
 
 	enum Format{
-		Format_24 = 0,
+		Format_24 = 0,   // What for zero is here?
 		Format_12
 	};
 
 	Time(void);
-	Time(int seconds);
+	Time(int seconds);            // Time(int = 0); will replace two constructors
 	~Time(void);
 
 	void PrintTime(Format) const;
