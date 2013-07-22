@@ -136,4 +136,29 @@ char String_::operator [] (const int pos)
 	return *(str + pos);
 }
 
+bool String_::operator > (const String_& s)
+{
+	return strcmp(str, s.str) == 1;
+}
+
+bool String_::operator >= (const String_& s)
+{
+	return (strcmp(str, s.str) == 1 || strcmp(str, s.str) == 0);
+}
+
+bool String_::operator < (const String_& s)
+{
+	return strcmp(str, s.str) == -1;
+}
+
+bool String_::operator <= (const String_& s)
+{
+	return (strcmp(str, s.str) == -1 || strcmp(str, s.str) == 0);
+}
+
+bool String_::operator == (const String_& s)
+{
+	return strcmp(str, s.str) == 0;
+}
+
 #pragma warning( default : 4996 )

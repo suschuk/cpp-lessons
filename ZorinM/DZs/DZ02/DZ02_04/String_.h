@@ -21,6 +21,12 @@ public:
 	String_& operator = (const String_&);
 	String_  operator * (const String_&);
 	char operator [] (const int);
+
+	bool operator > (const String_&);
+	bool operator >= (const String_&);
+	bool operator < (const String_&);
+	bool operator <= (const String_&);
+	bool operator == (const String_&);
 };
 
 #endif

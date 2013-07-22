@@ -28,5 +28,23 @@ int main()
 	cout << "str1[2] = " << str1 [2] << "\n\n";
 	cout << "str1[22] = " << str1 [22] << "\n\n";
 
+	cout << "str1 = " << str1.getStr() << "\n";
+	cout << "str3 = " << str3.getStr() << "\n";
+	
+	cout << "is str1 > str3 ? " << std::boolalpha << (str1 > str3) << "\n";
+	cout << "is str1 < str3 ? " << std::boolalpha << (str1 < str3) << "\n";
+	cout << "is str1 >= str3 ? " << std::boolalpha << (str1 >= str3) << "\n";
+	cout << "is str1 <= str3 ? " << std::boolalpha << (str1 <= str3) << "\n";
+	cout << "is str1 == str3 ? " << std::boolalpha << (str1 == str3) << "\n\n";
+	
+	str3.setStr("Our first string edited");
+
+	cout << "str1 = " << str1.getStr() << "\n";
+	cout << "str3 = " << str3.getStr() << "\n";
+	cout << "is str1 >= str3 ? " << std::boolalpha << (str1 >= str3) << "\n";
+	cout << "is str1 <= str3 ? " << std::boolalpha << (str1 <= str3) << "\n";
+	cout  << "is str1 == str3 ? " << std::boolalpha << (str1 == str3) << "\n\n";
+
+
 	return 0;
 }
