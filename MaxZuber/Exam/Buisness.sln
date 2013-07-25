@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "subProj", "subProj\subProj.vcxproj", "{49DDEB74-E4E8-4720-BD37-5E826F15AA52}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "forTEsts", "forTEsts\forTEsts.vcxproj", "{60FC8C41-8CE8-490B-80F0-C0767CFC5ADD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{49DDEB74-E4E8-4720-BD37-5E826F15AA52}.Debug|Win32.ActiveCfg = Debug|Win32
+		{49DDEB74-E4E8-4720-BD37-5E826F15AA52}.Debug|Win32.Build.0 = Debug|Win32
+		{49DDEB74-E4E8-4720-BD37-5E826F15AA52}.Release|Win32.ActiveCfg = Release|Win32
+		{49DDEB74-E4E8-4720-BD37-5E826F15AA52}.Release|Win32.Build.0 = Release|Win32
+		{60FC8C41-8CE8-490B-80F0-C0767CFC5ADD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{60FC8C41-8CE8-490B-80F0-C0767CFC5ADD}.Debug|Win32.Build.0 = Debug|Win32
+		{60FC8C41-8CE8-490B-80F0-C0767CFC5ADD}.Release|Win32.ActiveCfg = Release|Win32
+		{60FC8C41-8CE8-490B-80F0-C0767CFC5ADD}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
