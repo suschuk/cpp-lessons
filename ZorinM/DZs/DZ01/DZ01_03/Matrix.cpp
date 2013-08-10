@@ -238,7 +238,7 @@ Matrix& Matrix::operator *= ( const Matrix& m )
 				}
 			}
 		}
-		return res;
+		return (*this = res);
 	}
 
 	cout << "ERROR! Rows first matrix doesn't equal Cols of second\n";
