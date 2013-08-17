@@ -1,12 +1,17 @@
 Content
 DZ
+
+	Virtual Destructor
+
+	Containers
+
 	DZ04
 		DZ04_01 - LinkedList<>
 		DZ04_02 - SmartPointer
 	
 	DZ03
 		DZ03_01 - Date-Time
-		
+		DZ03_02 - LL + LIFO + FIFO
 		DZ03_03 - Matrix<>
 	
 	DZ02
