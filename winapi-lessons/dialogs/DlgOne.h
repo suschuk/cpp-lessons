@@ -14,4 +14,9 @@ public:
 
    LRESULT OnInitDialog(UINT, WPARAM, LPARAM, BOOL&);
    LRESULT      OnClose(UINT, WPARAM, LPARAM, BOOL&);
+
+private:
+
+    void InitControls();
+
 };
