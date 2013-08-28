@@ -1,0 +1,7 @@
+*/Debug
+*/ipch
+*/*.sdf
+*/*.suo
+*/*.aps
+# Usualy I include .gitignore file into this list
+#.gitignore
