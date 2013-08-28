@@ -3,5 +3,6 @@
 */*.sdf
 */*.suo
 */*.aps
+*/*.idc
 # Usualy I include .gitignore file into this list
 #.gitignore

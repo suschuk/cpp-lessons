@@ -21,8 +21,29 @@ void CDlgOne::InitControls() {
     InflateRect(&rc, -20, -20);
     rc.top = 10;
     rc.bottom = rc.top + lineHeight;
-
     ATLControls::CStatic header;
-    header.Create(m_hWnd, &rc, _T("Це перший діалог із серії. Демонструє елемети управління."), WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP);
+    header.Create(m_hWnd, &rc, _T("Це перший діалог із серії. Демонструє елемети управління."));
+
+    OffsetRect(&rc, 0, lineHeight);
+    RECT label = rc;
+    label.right = 80;
+    ATLControls::CStatic edit_label;
+    edit_label.Create(m_hWnd, &label, _T("Edit: "));
+
+    OffsetRect(&label, 100, 0);
+    ATLControls::CEdit edit;
+    edit.Create(m_hWnd, &label, _T("1234"), WS_CHILD | WS_VISIBLE | WS_TABSTOP);
+
+    OffsetRect(&label, 100, 0);
+    ATLControls::CButton edit_button;
+    edit_button.Create(m_hWnd, &label, _T("Show"), WS_CHILD | WS_VISIBLE | WS_TABSTOP);
+    edit_button.SetDlgCtrlID(444);
+
 
 }
+
+ LRESULT  CDlgOne::OnShowEdit(WORD, WORD, HWND, BOOL& )
+ {
+     MessageBox(_T("Button Show pressed"));
+     return 1;
+ }
