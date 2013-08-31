@@ -1,6 +1,8 @@
-*/Debug
-*/ipch
-*/*/Debug
-*/*.sdf
+**/Debug
+**/Release
+**/ipch
+**/*.sdf
+**/*.suo
+
 # Usualy I include .gitignore file into this list
 #.gitignore

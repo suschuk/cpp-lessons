@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Date", "Date\Date.vcxproj", "{497D70C6-6749-4EAA-99E9-51F1FFD4BBD9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Savchuk01", "Savchuk01\Savchuk01.vcxproj", "{CE8A82E2-D336-44EE-86C2-42BECB3DB07E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "menu", "menu\menu.vcxproj", "{D8AD138F-0CB0-4032-B74F-17E2E9161941}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{497D70C6-6749-4EAA-99E9-51F1FFD4BBD9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{497D70C6-6749-4EAA-99E9-51F1FFD4BBD9}.Debug|Win32.Build.0 = Debug|Win32
+		{497D70C6-6749-4EAA-99E9-51F1FFD4BBD9}.Release|Win32.ActiveCfg = Release|Win32
+		{497D70C6-6749-4EAA-99E9-51F1FFD4BBD9}.Release|Win32.Build.0 = Release|Win32
+		{CE8A82E2-D336-44EE-86C2-42BECB3DB07E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CE8A82E2-D336-44EE-86C2-42BECB3DB07E}.Debug|Win32.Build.0 = Debug|Win32
+		{CE8A82E2-D336-44EE-86C2-42BECB3DB07E}.Release|Win32.ActiveCfg = Release|Win32
+		{CE8A82E2-D336-44EE-86C2-42BECB3DB07E}.Release|Win32.Build.0 = Release|Win32
+		{D8AD138F-0CB0-4032-B74F-17E2E9161941}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D8AD138F-0CB0-4032-B74F-17E2E9161941}.Debug|Win32.Build.0 = Debug|Win32
+		{D8AD138F-0CB0-4032-B74F-17E2E9161941}.Release|Win32.ActiveCfg = Release|Win32
+		{D8AD138F-0CB0-4032-B74F-17E2E9161941}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
