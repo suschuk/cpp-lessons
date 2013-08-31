@@ -3,11 +3,11 @@
 
 int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int nCmdShow)
 {
+
     _Module.Init(NULL, hInstance, &LIBID_ATLLib);
 
     CDlgOne one;
     one.DoModal(0);
-
 
     _Module.Term();
 
