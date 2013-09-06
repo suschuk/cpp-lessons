@@ -4,10 +4,6 @@
 
 namespace ATLConterol = UI;
 
-
-
-
-
 void CDlgTwo::InitControls() {
 
     CRect rc;
@@ -21,6 +17,7 @@ void CDlgTwo::InitControls() {
     UINT STYLES = TVS_LINESATROOT | TVS_HASBUTTONS | TVS_HASLINES | TVS_INFOTIP | TVS_SHOWSELALWAYS;
     tree.Create(m_hWnd, rc, 0, STYLES | WS_VISIBLE | WS_CHILD | WS_BORDER);
     assert(tree.IsWindow());
+    tree.SetDlgCtrlID(IDC_TREEVIEW_ONE);
 /*
     SHFILEINFO shfi = {0};
     HIMAGELIST hSysImgList = (HIMAGELIST)SHGetFileInfo(_T("C:\\"), 0, &shfi, sizeof(SHFILEINFO), SHGFI_SYSICONINDEX |  SHGFI_LARGEICON |  SHGFI_ICON);  // SHGFI_SMALLICON |
@@ -64,3 +61,31 @@ void CDlgTwo::InitControls() {
 
 }
 
+ LRESULT CDlgTwo::OnNMClickTree(int idCtrl, LPNMHDR pNMHDR, BOOL& bHandled) {
+
+     assert(IDC_TREEVIEW_ONE);
+
+     MessageBox(_T("++"));
+
+     return 0;
+ }
+
+LRESULT CDlgTwo::OnInfoTipTree(int idCtrl, LPNMHDR lpNMHDR, BOOL& bHandled) {
+
+     assert(IDC_TREEVIEW_ONE);
+     assert(lpNMHDR->code == TVN_GETINFOTIP);
+
+     LPNMTVGETINFOTIP pTip = (LPNMTVGETINFOTIP)lpNMHDR;
+
+     UI::CTreeItem item(pTip->hItem, &tree);
+
+
+    CComBSTR bstr;
+    item.GetText(bstr.m_str);
+    MessageBox((LPCTSTR)bstr);
+
+        
+    item.SetText(L"מסüמסüמ");
+
+     return 0;
+ }
