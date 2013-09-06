@@ -1,0 +1,4 @@
+#define BUTTON_WIDTH    140
+#define BUTTON_HEIGHT   32
+#define HORIZONTAL_GAP  16
+#define VERTICAL_GAP    24

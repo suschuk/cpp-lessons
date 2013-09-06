@@ -1,13 +1,20 @@
 #include "stdafx.h"
 #include "DlgOne.h"
+#include "DlgTwo.h"
 
 int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int nCmdShow)
 {
 
-    _Module.Init(NULL, hInstance, &LIBID_ATLLib);
+    _Module.Init(NULL, hInstance);
 
-    CDlgOne one;
-    one.DoModal(0);
+    INITCOMMONCONTROLSEX iccex = {sizeof(iccex), ICC_TREEVIEW_CLASSES};
+/*
+    if(CDlgOne().DoModal(0))
+        return 1;
+*/
+    
+    if(CDlgTwo().DoModal(0))
+        return 1;
 
     _Module.Term();
 

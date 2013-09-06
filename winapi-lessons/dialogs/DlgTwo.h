@@ -2,19 +2,22 @@
 
 #include "DlgBase.h"
 
-class CDlgOne : public CDlgBase {
+class CDlgTwo : public CDlgBase {
 
 public:
 
-   BEGIN_MSG_MAP(CDlgOne)
+   BEGIN_MSG_MAP(CDlgTwo)
+
       CHAIN_MSG_MAP(CDlgBase)
    END_MSG_MAP()
-
-   LRESULT   OnShowEdit(WORD, WORD, HWND, BOOL& );
 
 private:
 
     void processOk();
     void InitControls();
+
+private:
+
+    ATLControls::CTreeViewCtrlEx tree;
 
 };

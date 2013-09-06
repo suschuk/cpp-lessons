@@ -1,30 +1,18 @@
 #include "stdafx.h"
 #include "DlgOne.h"
-#include "controls.h"
-
-LRESULT CDlgOne::OnInitDialog(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled) {
-    CenterWindow();
-    InitControls();
-    return 1;
-}
-
-LRESULT CDlgOne::OnClose(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled) {
-      return EndDialog(0);
-}
 
 void CDlgOne::InitControls() {
 
-    const int lineHeight = 30;
     RECT rc;
     
     GetClientRect(&rc);
     InflateRect(&rc, -20, -20);
     rc.top = 10;
-    rc.bottom = rc.top + lineHeight;
+    rc.bottom = rc.top + BUTTON_HEIGHT;
     ATLControls::CStatic header;
     header.Create(m_hWnd, &rc, _T("Це перший діалог із серії. Демонструє елемети управління."));
 
-    OffsetRect(&rc, 0, lineHeight);
+    OffsetRect(&rc, 0, BUTTON_HEIGHT);
     RECT label = rc;
     label.right = 80;
     ATLControls::CStatic edit_label;
@@ -47,3 +35,9 @@ void CDlgOne::InitControls() {
      MessageBox(_T("Button Show pressed"));
      return 1;
  }
+
+ void CDlgOne::processOk() {
+
+    MessageBox(_T("CDlgOne::processOk() "));
+
+}
