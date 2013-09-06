@@ -2,8 +2,6 @@
 #include "DlgTwo.h"
 #include "HIMLAPI.h"
 
-namespace ATLConterol = UI;
-
 void CDlgTwo::InitControls() {
 
     CRect rc;
@@ -20,7 +18,8 @@ void CDlgTwo::InitControls() {
     tree.SetDlgCtrlID(IDC_TREEVIEW_ONE);
 /*
     SHFILEINFO shfi = {0};
-    HIMAGELIST hSysImgList = (HIMAGELIST)SHGetFileInfo(_T("C:\\"), 0, &shfi, sizeof(SHFILEINFO), SHGFI_SYSICONINDEX |  SHGFI_LARGEICON |  SHGFI_ICON);  // SHGFI_SMALLICON |
+    HIMAGELIST hSysImgList = (HIMAGELIST)SHGetFileInfo(_T("C:\\"), 0, &shfi, sizeof(SHFILEINFO), 
+    SHGFI_SYSICONINDEX |  SHGFI_LARGEICON |  SHGFI_ICON);  // SHGFI_SMALLICON |
 */
 
     HIMAGELIST himlLarge = 0;
@@ -28,7 +27,8 @@ void CDlgTwo::InitControls() {
 
     GetSystemImageLists(&himlLarge, &himlSmall);
 
-    UI::CImageList imageList(himlLarge);
+//  UI::CImageList imageList(himlLarge);
+    UI::CImageList imageList(himlSmall);
 
     tree.SetImageList(imageList, TVSIL_NORMAL);
 
@@ -65,27 +65,29 @@ void CDlgTwo::InitControls() {
 
      assert(IDC_TREEVIEW_ONE);
 
-     MessageBox(_T("++"));
+     MessageBox(_T("клікнув?"));
 
      return 0;
  }
 
+
+
 LRESULT CDlgTwo::OnInfoTipTree(int idCtrl, LPNMHDR lpNMHDR, BOOL& bHandled) {
 
-     assert(IDC_TREEVIEW_ONE);
-     assert(lpNMHDR->code == TVN_GETINFOTIP);
+    assert(IDC_TREEVIEW_ONE);
+    assert(lpNMHDR->code == TVN_GETINFOTIP);
 
-     LPNMTVGETINFOTIP pTip = (LPNMTVGETINFOTIP)lpNMHDR;
+    LPNMTVGETINFOTIP pTip = (LPNMTVGETINFOTIP)lpNMHDR;
 
-     UI::CTreeItem item(pTip->hItem, &tree);
-
+    UI::CTreeItem item(pTip->hItem, &tree);
 
     CComBSTR bstr;
     item.GetText(bstr.m_str);
     MessageBox((LPCTSTR)bstr);
 
-        
     item.SetText(L"осьосьо");
 
-     return 0;
+    return 0;
  }
+
+

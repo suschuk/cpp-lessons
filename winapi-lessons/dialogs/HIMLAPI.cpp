@@ -22,8 +22,8 @@ BOOL GetSystemImageLists(HIMAGELIST* phimlLarge, HIMAGELIST* phimlSmall) {
     Shell_GetImageLists  = (SH_GIL_PROC) GetProcAddress(hShell32, (LPCSTR)71);
     FileIconInit         = (FII_PROC)    GetProcAddress(hShell32, (LPCSTR)660);
 
-   assert(FileIconInit);
-   FileIconInit(TRUE);
+    assert(FileIconInit);
+    FileIconInit(TRUE);
 
     assert(Shell_GetImageLists);
     Shell_GetImageLists(phimlLarge, phimlSmall);
