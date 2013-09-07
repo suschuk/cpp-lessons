@@ -6,6 +6,7 @@ using namespace std;
 
 ostream& operator << (ostream& out, Person& p)
 {
+
 	out << p.fName << " " << p.sName << " " << p.lName;
 	return out;
 }
@@ -28,12 +29,15 @@ void Clients::cons_add()
 
 	string f, s, l;
 	cout << "::Adding new Client::" << endl;
-	cout << "Enter name: ";
-	cin >> f;
+	cin.sync();
+	cout << "Enter first name: ";
+	getline(cin, f);
 	cout << "Enter second name: ";
-	cin >> s;
+	cin.sync();
+	getline(cin , s);
 	cout << "Enter last name: ";
-	cin >> l;
+	cin.sync();
+	getline(cin, l);
 	add(f, s, l);
 }
 
@@ -45,11 +49,14 @@ void Clients::cons_find()
 {
 	string f, s, l;
 	cout << "Enter first name: ";
-	cin >> f;
+	cin.sync();
+	getline(cin, f);
 	cout << "Enter second name: ";
-	cin >> s;
+	cin.sync();
+	getline(cin , s);
 	cout << "Enter last name: ";
-	cin >> l;
+	cin.sync();
+	getline(cin, l);
 	std::list<Person>::iterator it;
 	it = _find(f, s, l);
 
@@ -79,11 +86,14 @@ void Clients::cons_remove()
 {
 	string f, s, l;
 	cout << "Enter first name: ";
-	cin >> f;
+	cin.sync();
+	getline(cin, f);
 	cout << "Enter second name: ";
-	cin >> s;
+	cin.sync();
+	getline(cin , s);
 	cout << "Enter last name: ";
-	cin >> l;
+	cin.sync();
+	getline(cin, l);
 	auto it = _find(f, s, l);
 
 	if(it != clients.end())

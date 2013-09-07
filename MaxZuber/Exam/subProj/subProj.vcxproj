@@ -12,8 +12,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Clients.cpp" />
-    <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="MenuItem.cpp" />
     <ClCompile Include="mi_main.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="Orders.cpp" />

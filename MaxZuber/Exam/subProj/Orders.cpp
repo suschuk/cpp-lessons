@@ -11,22 +11,27 @@ void Orders::newOrder()
 {
 	Order_Data od;
 	cout << "Enter goods name: ";
-	cin >> od.name_;
+	cin.sync();
+	getline(cin, od.name_);
 	cout << "Enter count: ";
+	cin.sync();
 	cin >> od.count;
 	cout << "Enter price per one: ";
+	cin.sync();
 	cin >> od.price;
 	od.price *= od.count;
 
 
 	string f, s, l;
-	cout << "Who you are ?" << endl;
-	cout << "Enter name: ";
-	cin >> f;
+	cout << "Enter first name: ";
+	cin.sync();
+	getline(cin, f);
 	cout << "Enter second name: ";
-	cin >> s;
+	cin.sync();
+	getline(cin , s);
 	cout << "Enter last name: ";
-	cin >> l;
+	cin.sync();
+	getline(cin, l);
 
 	add(od, Person(f, s, l));
 }
