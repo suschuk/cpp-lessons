@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MsgCrack", "MsgCrack\MsgCrack.vcxproj", "{27D08CA7-066C-4168-B77F-1ECF9CC4D803}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27D08CA7-066C-4168-B77F-1ECF9CC4D803}.Debug|Win32.ActiveCfg = Debug|Win32
+		{27D08CA7-066C-4168-B77F-1ECF9CC4D803}.Debug|Win32.Build.0 = Debug|Win32
+		{27D08CA7-066C-4168-B77F-1ECF9CC4D803}.Release|Win32.ActiveCfg = Release|Win32
+		{27D08CA7-066C-4168-B77F-1ECF9CC4D803}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
