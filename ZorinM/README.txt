@@ -4,6 +4,7 @@ Win32
 	
 	DLL - Create a dll
 
+	DZ02 - MSG_CRACKERS	
 	DZ01 - Base Window
 	
 
