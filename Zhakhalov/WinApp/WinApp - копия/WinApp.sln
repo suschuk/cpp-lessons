@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinApp", "WinApp\WinApp.vcxproj", "{F5E4D0FC-2BE0-4A08-B3BD-D81FBB516B33}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinMessageCrackers", "WinMessageCrackers\WinMessageCrackers.vcxproj", "{F403D912-CEA1-46BF-9779-AB2840C687FE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinATLControls", "WinATLControls\WinATLControls.vcxproj", "{17B5EFF3-A236-4B10-8A63-CE2C7715EAC2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5E4D0FC-2BE0-4A08-B3BD-D81FBB516B33}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F5E4D0FC-2BE0-4A08-B3BD-D81FBB516B33}.Debug|Win32.Build.0 = Debug|Win32
+		{F5E4D0FC-2BE0-4A08-B3BD-D81FBB516B33}.Release|Win32.ActiveCfg = Release|Win32
+		{F5E4D0FC-2BE0-4A08-B3BD-D81FBB516B33}.Release|Win32.Build.0 = Release|Win32
+		{F403D912-CEA1-46BF-9779-AB2840C687FE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F403D912-CEA1-46BF-9779-AB2840C687FE}.Debug|Win32.Build.0 = Debug|Win32
+		{F403D912-CEA1-46BF-9779-AB2840C687FE}.Release|Win32.ActiveCfg = Release|Win32
+		{F403D912-CEA1-46BF-9779-AB2840C687FE}.Release|Win32.Build.0 = Release|Win32
+		{17B5EFF3-A236-4B10-8A63-CE2C7715EAC2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{17B5EFF3-A236-4B10-8A63-CE2C7715EAC2}.Debug|Win32.Build.0 = Debug|Win32
+		{17B5EFF3-A236-4B10-8A63-CE2C7715EAC2}.Release|Win32.ActiveCfg = Release|Win32
+		{17B5EFF3-A236-4B10-8A63-CE2C7715EAC2}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
