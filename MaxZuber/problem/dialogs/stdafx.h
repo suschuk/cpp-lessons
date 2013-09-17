@@ -14,3 +14,5 @@ extern CComModule _Module;
 #include <sstream>
 #include "atlcontrols.h"
 #include <Commctrl.h>
+
+#include "Singleton.h"

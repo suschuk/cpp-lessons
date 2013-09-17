@@ -38,12 +38,20 @@ void CDlgThree::InitControls() {
 	 tree.SetDlgCtrlID(IDC_TREEVIEW_ONE);
 
 	ATLControls::CTreeItem item1;
-	HIMAGELIST hLrg = 0;
+	/*HIMAGELIST hLrg = 0;
 	HIMAGELIST hSml = 0;
-	GetSystemImageLists(&hLrg, &hSml);
-	ATLControls::CImageList img_lst(hLrg);
+	GetSystemImageLists(&hLrg, &hSml);*/
 
-	tree.SetImageList(img_lst, TVSIL_NORMAL);
+	HIMAGELIST* hSml;
+
+	Singleton* sImg = Singleton::getInctance();
+
+	hSml = sImg->getSml();
+	
+
+	ATLControls::CImageList img_lst(*hSml);
+
+	tree.SetImageList(*hSml, TVSIL_NORMAL);
 
 	ATLControls::CTreeItem root = tree.GetRootItem();
 	int count = img_lst.GetImageCount();

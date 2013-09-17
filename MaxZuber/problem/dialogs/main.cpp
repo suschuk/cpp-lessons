@@ -7,6 +7,8 @@ HINSTANCE g_hInst;
 
 int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int nCmdShow)
 {
+
+	Singleton* s = Singleton::getInctance();
 	g_hInst = hInstance;
     _Module.Init(NULL, hInstance, &LIBID_ATLLib);
 

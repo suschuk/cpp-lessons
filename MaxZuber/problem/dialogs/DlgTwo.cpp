@@ -65,12 +65,19 @@ void CDlgTwo::InitControls() {
 		lst_view.SetColumnWidth(iCol,colsize);
 
 	}
-	HIMAGELIST hLrg = 0;
+	/*HIMAGELIST hLrg = 0;
 	HIMAGELIST hSml = 0;
-	GetSystemImageLists(&hLrg, &hSml);
-	ATLControls::CImageList img_lst(hSml);
+	GetSystemImageLists(&hLrg, &hSml);*/
 
-	lst_view.SetImageList(img_lst, LVSIL_SMALL);
+
+	HIMAGELIST* hSml;
+
+	Singleton* sImg = Singleton::getInctance();
+
+	hSml = sImg->getSml();
+	ATLControls::CImageList img_lst(*hSml);
+
+	lst_view.SetImageList(*hSml, LVSIL_SMALL);
 	int cItems = 5;
 
 	lst_view.SetTextColor(0x00FF0000);
@@ -169,7 +176,6 @@ void CDlgTwo::InitControls() {
 	cbox.AddString(_T("thre"));
 	cbox.SetCurSel(3);
 	cbox.SetDlgCtrlID(555);
-
 
 };
 
