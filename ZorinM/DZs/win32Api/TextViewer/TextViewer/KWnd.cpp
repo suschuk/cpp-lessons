@@ -1,5 +1,3 @@
-////////////////////////////////////////////////////////////
-// KWnd.cpp
 #include "KWnd.h"
 
 KWnd::KWnd(LPCTSTR windowName, HINSTANCE hInst, int cmdShow,
@@ -22,7 +20,7 @@ KWnd::KWnd(LPCTSTR windowName, HINSTANCE hInst, int cmdShow,
 	wc.lpszClassName = szClassName;
 	wc.hIconSm       = LoadIcon(NULL, IDI_APPLICATION);
 
-	// Регистрируем класс окна
+	// реєструємо клас вікна
 	if (!RegisterClassEx(&wc)) {
 		TCHAR msg[100] = L"Cannot register class: ";
 		wcscat_s(msg, szClassName);
@@ -30,7 +28,7 @@ KWnd::KWnd(LPCTSTR windowName, HINSTANCE hInst, int cmdShow,
 		return;
 	}
 	
-	// Создаем окно
+	// створюємо вікно
 	hWnd = CreateWindow(szClassName, windowName, windowStyle,
 		x, y, width, height, hParent, (HMENU)NULL, hInst, NULL);       
 	
@@ -41,6 +39,5 @@ KWnd::KWnd(LPCTSTR windowName, HINSTANCE hInst, int cmdShow,
 		return;
 	}
 
-	// Показываем  окно
 	ShowWindow(hWnd, cmdShow); 
 }

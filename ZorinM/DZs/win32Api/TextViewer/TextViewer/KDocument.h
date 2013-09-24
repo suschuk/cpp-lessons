@@ -14,16 +14,16 @@ public:
 	void UpdateVscroll(HWND hwnd, int yInc);
 	void PutText(HWND hwnd, HDC hdc);
 
-	int cxChar;     // средняя ширина символа
-	int yStep;      // высота (шаг) строки
-	int lineLenMax; // максимальная длина строки
+	int cxChar;     // средня ширина символу
+	int yStep;      // висота строки
+	int lineLenMax; // максимальна довжина строки
 
-	SCROLLINFO vsi; // вертикальный скроллинг
-	int vertRange;  // диапазон вертикальной полосы прокрутки
-	SCROLLINFO hsi; // горизонтальный скроллинг
-	int horzRange;  // диапазон горизонтальной полосы прокрутки
+	SCROLLINFO vsi; // скролінг vert
+	int vertRange;  // діапазон верт. полоси прокрутки
+	SCROLLINFO hsi; // скролінг horz
+	int horzRange;  // діапазон гор. полось прокрутки
 
 private:
-	vector<string> lines; // вектор для хранения строк документа
+	vector<string> lines; // вектор для зберігання строк документу
 };
 

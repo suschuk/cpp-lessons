@@ -1,5 +1,3 @@
-//////////////////////////////////////////////////////////////////////
-// KDocument.cpp
 #include <windows.h>
 #include <fstream>
 #include "KDocument.h"
@@ -14,18 +12,18 @@ BOOL KDocument::Open(const char* file) {
 		return FALSE;
 	}
 
-	// Прочитать файл, сохранив информацию в векторе строк lines
+	// вичитати вміст файлу в вектор строк lines
 	while(!finp.eof()) {
 		finp.getline(buf, 199);
 		buf[199] = 0;
 		lines.push_back(string(buf));
 	}
 
-	// Вычислить максимальную длину строки
+	// обрахунок максимальної довжини строки 
 	lineLenMax = 0;
 	for (int i = 0; i < (int)lines.size(); ++i) {
 		int lineLen = lines[i].size();
-		// Корректировка, если строка содержит символы табуляции
+		// таби
 		int iTabPos = 0;
 		while (1) {
 			iTabPos = lines[i].find('\t', iTabPos);
@@ -49,7 +47,7 @@ void KDocument::Initialize(LPTEXTMETRIC tm) {
 
 void KDocument::ScrollSettings(HWND hwnd, int width, int height) {
 
-	// Вертикальный скроллинг
+	// скролінг vert
 	vsi.cbSize = sizeof(vsi);
 	vsi.fMask = SIF_RANGE | SIF_PAGE | SIF_POS;
 	vsi.nPage = height / yStep - 1;
@@ -59,7 +57,7 @@ void KDocument::ScrollSettings(HWND hwnd, int width, int height) {
 	vertRange = vsi.nMax - vsi.nMin + 1;
 	SetScrollInfo(hwnd, SB_VERT, &vsi, TRUE);
 
-	// Горизонтальный скроллинг
+	// скролінг horz
 	hsi.cbSize = sizeof(SCROLLINFO);
 	hsi.fMask = SIF_RANGE | SIF_PAGE | SIF_POS;
 	hsi.nPage = width/cxChar - 2;
@@ -71,9 +69,9 @@ void KDocument::ScrollSettings(HWND hwnd, int width, int height) {
 }
 
 void KDocument::UpdateVscroll(HWND hwnd, int yInc) {
-	// ограничение на положительное приращение
+	// обмеження +
 	yInc = min(yInc, vertRange - (int)vsi.nPage - vsi.nPos);
-	// ограничение на отрицательное приращение
+	// обмеження -
 	yInc = max(yInc, vsi.nMin - vsi.nPos);
 
 	if (yInc) {
@@ -86,9 +84,9 @@ void KDocument::UpdateVscroll(HWND hwnd, int yInc) {
 }
 
 void KDocument::UpdateHscroll(HWND hwnd, int xInc) {
-	// ограничение на положительное приращение
+	// обмеження +
 	xInc = min(xInc, horzRange - (int)hsi.nPage - hsi.nPos);
-	// ограничение на отрицательное приращение
+	// обмеження -
 	xInc = max(xInc, hsi.nMin - hsi.nPos);
 
 	if (xInc) {
