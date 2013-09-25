@@ -7,10 +7,15 @@ class CDlgOne : public CDlgBase {
 public:
 
    BEGIN_MSG_MAP(CDlgOne)
-      CHAIN_MSG_MAP(CDlgBase)
+       COMMAND_ID_HANDLER(IDC_BUTTON_SHOW, OnShowEdit)
+       CHAIN_MSG_MAP(CDlgBase)
    END_MSG_MAP()
 
    LRESULT   OnShowEdit(WORD, WORD, HWND, BOOL& );
+
+private:
+
+    UI::CEdit edit;
 
 private:
 

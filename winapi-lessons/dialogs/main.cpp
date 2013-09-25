@@ -4,6 +4,7 @@
 
 int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int nCmdShow)
 {
+    std::locale::global(std::locale(""));
 
     _Module.Init(NULL, hInstance);
 

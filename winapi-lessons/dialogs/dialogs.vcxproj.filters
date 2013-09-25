@@ -65,4 +65,7 @@
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="file.dat" />
+  </ItemGroup>
 </Project>

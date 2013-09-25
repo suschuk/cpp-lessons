@@ -13,6 +13,9 @@ extern CComModule _Module;
 #include <string>
 #include <cassert>
 #include <sstream>
+#include <vector>
+#include <fstream>
+#include <locale>
 
 // common resources
 
