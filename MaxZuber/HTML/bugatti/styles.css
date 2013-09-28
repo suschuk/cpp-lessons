@@ -1,0 +1,159 @@
+body
+{
+background-color:#DADADA
+}
+
+
+div.header
+{
+background: linear-gradient( to bottom, #C3C3C3, #DADADA) no-repeat;
+ 
+ width: 100%;
+ text-align: center;
+ height:75px;
+ top:0px;
+ left:0px;
+ right:0px;
+ font-size: 175%;
+position: absolute;
+letter-spacing: 2px;
+}
+div.header span
+{
+color:#666666;
+position:absolute;
+top:15px;
+left:47%;
+font-family: "Avant Garde";
+}
+
+div img.headerImg
+{
+
+width:75px;
+height:75px;
+}
+div img.headerImg#first
+{
+float:left;
+margin-left:10px;
+}
+div img.headerImg#second
+{
+float:right;
+margin-right:10px;
+}
+
+div.navbar ul li a 
+{
+display:block;
+width:200px;
+color:#8E8D89;
+text-decoration:none;
+}
+div.navbar ul
+{
+list-style-type:none;
+margin:0;
+padding:0;
+
+}
+
+div.navbar
+{
+position:fixed;
+top:400px;
+}
+
+div.data
+{
+border: 1px solid black;
+border-radius:5px;
+background:#EEEEEE;
+left:35%;
+width:33%;
+position:relative;
+top:150px;
+}
+
+div.article
+{
+margin:7px;
+border:1px solid black;
+padding: 7px;
+border-radius:5px;
+
+}
+
+div.article p 
+{
+font-family:serif;
+text-align: justify;
+}
+img.articleImg
+{
+
+width:100%;
+}
+
+div p.date
+{
+font-family:times;
+color: grey;
+}
+
+
+div.vkParent 
+{
+border:2px solid black;
+width:200px;
+float:right;
+margin-top:20%;
+margin-right:20%;
+border-radius:5px;
+
+}
+
+div.vkParent  div.vkChild1 img.vkImg
+{
+width:100%;
+padding-top: 5px;
+}
+
+div.vkParent div.vkChild1
+{
+margin:5px;
+}
+
+div.hr
+{
+margin-top:175px;
+position:static;
+}
+
+div.footer
+{
+color:gray;
+position:absolute;
+margin:0px;
+padding:0px;
+capacity:0.3;
+width:99.5%;
+height:100px;
+background:linear-gradient( to bottom, #DADADA, #C3C3c3) no-repeat;
+}
+div.footer div.Contact
+{
+float: left;
+margin-left:100px;
+
+}
+
+div.footer div.copyRight
+{
+
+text-align:right;
+margin-right:100px;
+}
+
+
