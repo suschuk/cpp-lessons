@@ -1,9 +1,11 @@
 Content
 DZ
 Win32
-	
-	DLL - Create a dll
+		
+	testwork - win32 api testwork
+	dlg_1 -  dialog 1
 
+	DLL - Create a dll
 	DZ02 - MSG_CRACKERS	
 	DZ01 - Base Window
 	
