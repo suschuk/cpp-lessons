@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KR01", "..\KR01\KR01.vcxproj", "{5AD087BE-4A2B-4F39-87E2-B208AF765E53}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KR02", "..\KR02\KR02.vcxproj", "{BC42A8EC-2E24-41D8-9EE3-C857DA835599}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5AD087BE-4A2B-4F39-87E2-B208AF765E53}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5AD087BE-4A2B-4F39-87E2-B208AF765E53}.Debug|Win32.Build.0 = Debug|Win32
+		{5AD087BE-4A2B-4F39-87E2-B208AF765E53}.Release|Win32.ActiveCfg = Release|Win32
+		{5AD087BE-4A2B-4F39-87E2-B208AF765E53}.Release|Win32.Build.0 = Release|Win32
+		{BC42A8EC-2E24-41D8-9EE3-C857DA835599}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BC42A8EC-2E24-41D8-9EE3-C857DA835599}.Debug|Win32.Build.0 = Debug|Win32
+		{BC42A8EC-2E24-41D8-9EE3-C857DA835599}.Release|Win32.ActiveCfg = Release|Win32
+		{BC42A8EC-2E24-41D8-9EE3-C857DA835599}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
