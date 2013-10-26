@@ -3,125 +3,32 @@ const FPS = 60;
 var canvas = document.getElementById("myCanvas");
 var context = canvas.getContext("2d");
 
-function Vec2()
-{
-	this.x = 0.0;
-	this.y = 0.0;
-
-	this.Set = function(X,Y)
-	{
-		this.x = X;
-		this.y = Y;
-	}
-	
-	this.Add = function(X,Y)
-	{
-		this.x += X;
-		this.y += Y;
-	}
-}
-
-function DisplayOrder()
-{
-	this.order = new Array();
-	
-	this.Draw = function(canvas)
-	{
-		for(var i = 0; i < this.order.length; ++i)
-		{
-			this.order[i].Draw(canvas);
-		}
-	}
-	
-	this.RemoveAt = function(idx)
-	{
-		this.order.splice(idx,1);
-	}
-	
-	this.AddAt = function(sprite,idx)
-	{
-		this.order.splice(idx,0,sprite);
-	}
-}
-
-function Sprite()
-{
-	this.img = new Image();
-	this.hotSpot = new Vec2();
-	this.rotation = 0.0;
-	this.x = 0.0;
-	this.y = 0.0;
-	this.width = 0.0;
-	this.height = 0.0;
-	
-	this.Draw = function(canvas)
-	{
-		canvas.getContext("2d").translate(this.x,this.y);
-		canvas.getContext("2d").rotate(-this.rotation * Math.PI/180);
-		canvas.getContext("2d").drawImage(this.img, -this.hotSpot.x, -this.hotSpot.y, this.width, this.height);
-		canvas.getContext("2d").rotate(this.rotation * Math.PI/180);
-		canvas.getContext("2d").translate(-this.x,-this.y);
-	}
-}
-
-function Body()
-{
-	this.pos = new Vec2();
-	this.force = new Vec2();
-	this.velocity = new Vec2();
-	this.friction = new Vec2(); //0..1
-	this.mass = 0.0;
-	
-	this.prototype = new Sprite();
-	
-	this.Update = function()
-	{
-		this.velocity.Add((this.force.x / this.mass + gravity.x - this.friction.x * this.velocity.x)/ FPS, (this.force.y / this.mass + gravity.y - this.friction.y * this.velocity.y)/ FPS);
-		this.prototype.x += this.velocity.x;
-		this.prototype.y += this.velocity.y;
-		
-		this.prototype.rotation = -Math.atan(this.velocity.y / this.velocity.x) * 180 / Math.PI;
-		this.prototype.rotation -= 90;
-	}
-}
-
 var displayOrder = new DisplayOrder();
-
-
 var gravity = new Vec2();
-gravity.Set(0,9.81);
-
-var ball = new Body();
-ball.prototype.x = 10
-ball.prototype.y = 200;
-ball.velocity.Set(8, -8);
-ball.mass = 5.0;
-ball.prototype.width = 9.0;
-ball.prototype.height = 14.0;
-ball.prototype.rotation = 0.0;
-ball.prototype.img.src = "missile.png";
-
+var missile = new Body();
 var water = new Sprite();
-water.img.src = "water.png";
-water.width = 1020;
-water.height = 600;
-water.x = 0;
-water.y = 300;
+var tank = new Sprite();
 
-displayOrder.AddAt(ball.prototype,0);
-displayOrder.AddAt(water,1);
+var background = context.createLinearGradient(0,300,0,700);
+background.addColorStop(0,"black");
+background.addColorStop(1,"rgba(128,128,200,255)");
 
 function Update()
 {
-	ball.Update();
+	missile.Update();
 	
-	if(ball.prototype.y > 300)
+	missile.prototype.rotation = Math.atan(-missile.velocity.y / missile.velocity.x) * 180 / Math.PI;
+	if(missile.velocity.x < 0)
+		missile.prototype.rotation += 180;
+	
+	if(missile.prototype.rectangle.y > water.rectangle.y)
 	{
-		ball.friction.Set(15.0,15.0);
+		missile.friction.Set(15.0,15.0);
+		missile.prototype.visible = false;
 	}
 	else
 	{
-		ball.friction.Set(0.0,0.0);
+		missile.friction.Set(0.5,0.5);
 	}
 	
 	Draw();
@@ -130,161 +37,74 @@ function Update()
 function Draw()
 {
 	context.clearRect(0,0,canvas.width,canvas.height);
-	//ball.Draw(canvas);
+	
+	//context.globalCompositeOperation = 'xor'
+	context.fillStyle = background;
+	context.fillRect(0,0,canvas.width,canvas.height);
+	
+	
 	displayOrder.Draw(canvas);
+	
+	
 }
 
 function Start()
 {
+	gravity.Set(0,9.81);
+	
+	missile.prototype.rectangle.x = 10
+	missile.prototype.rectangle.y = 200;
+	missile.velocity.Set(8, -8);	
+	missile.prototype.rectangle.width = 13;
+	missile.prototype.rectangle.height = 7;
+	missile.prototype.rotation = 0;
+	missile.prototype.hotSpot.Set(7, 4);
+	missile.prototype.img.src = "missile.png";
+	missile.prototype.visible = false;
+	missile.mass = 5.0;
+	
+	water.img.src = "water.png";
+	water.rectangle.width = 1280;
+	water.rectangle.height = 650;
+	water.rectangle.x = 0;
+	water.rectangle.y = 600;
+	
+	tank.img.src = "ball.png";
+	tank.rectangle.width = 8.0;
+	tank.rectangle.height = 8.0;
+	tank.rectangle.x = 200;
+	tank.rectangle.y = 550;
+	tank.hotSpot.Set(4, 4);
+	
+	displayOrder.AddAt(missile.prototype,0);
+	displayOrder.AddAt(tank,1);
+	displayOrder.AddAt(water,2);
+	
+	//canvas.addEventListener('mousedown', startDrag, false);
+	canvas.addEventListener('mouseup', endDrag, false);
+	canvas.addEventListener('mousemove', drag, false);
+
 	var myTimer = setInterval(Update, 1000/FPS);
 }
 
-
-/*
-
-const FPS = 60;
-
-var canvas = document.getElementById("myCanvas");
-var context = canvas.getContext("2d");
-
-function Vec2()
-{
-	this.x = 0.0;
-	this.y = 0.0;
-
-	this.Set = function(X,Y)
+function startDrag(event)
+{	
+	/*if(ball.rectangle.Contains(event.clientX, event.clientY))
 	{
-		this.x = X;
-		this.y = Y;
-	}
-	
-	this.Add = function(X,Y)
-	{
-		this.x += X;
-		this.y += Y;
-	}
+		canvas.addEventListener('mousemove', drag, false);
+		canvas.addEventListener('mouseup', endDrag, false);
+	}*/
 }
 
-function DisplayOrder()
+function drag(event)
 {
-	this.order = new Array();
-	
-	this.Draw = function(canvas)
-	{
-		for(var i = 0; i < this.order.length; ++i)
-		{
-			this.order[i].Draw(canvas);
-		}
-	}
-	
-	this.RemoveAt = function(idx)
-	{
-		this.order.splice(idx,1);
-	}
-	
-	this.AddAt = function(sprite,idx)
-	{
-		this.order.splice(idx,0,sprite);
-	}
+
 }
 
-function Sprite()
+function endDrag(event)
 {
-	this.img = new Image();
-	this.hotSpot = new Vec2();
-	this.rotation = 0.0;
-	this.x = 0.0;
-	this.y = 0.0;
-	this.width = 0.0;
-	this.height = 0.0;
-	
-	this.Draw = function(canvas)
-	{
-		canvas.getContext("2d").translate(this.x,this.y);
-		canvas.getContext("2d").rotate(-this.rotation * Math.PI/180);
-		canvas.getContext("2d").drawImage(this.img, -this.hotSpot.x, -this.hotSpot.y, this.width, this.height);
-		canvas.getContext("2d").rotate(this.rotation * Math.PI/180);
-		canvas.getContext("2d").translate(-this.x,-this.y);
-	}
+	missile.prototype.visible = true;
+	missile.velocity.Set((event.clientX - canvas.getBoundingClientRect().left - tank.rectangle.x - tank.hotSpot.x) / 10, (event.clientY - canvas.getBoundingClientRect().top - tank.rectangle.y - tank.hotSpot.y) / 10);
+	missile.pos.x = tank.rectangle.x + tank.hotSpot.x;
+	missile.pos.y = tank.rectangle.y + tank.hotSpot.y;
 }
-
-function Body()
-{
-	this.pos = new Vec2();
-	this.force = new Vec2();
-	this.velocity = new Vec2();
-	this.friction = new Vec2(); //0..1
-	this.mass = 0.0;
-	
-	this.sprite = new Sprite();
-	
-	this.Update = function()
-	{
-		this.velocity.Add((this.force.x / this.mass + gravity.x - this.friction.x * this.velocity.x)/ FPS, (this.force.y / this.mass + gravity.y - this.friction.y * this.velocity.y)/ FPS);
-		this.pos.Add(this.velocity.x, this.velocity.y);
-		
-		this.sprite.x = this.pos.x;
-		this.sprite.y = this.pos.y;
-		
-		this.sprite.rotation = -Math.atan(this.velocity.y / this.velocity.x) * 180 / Math.PI;
-		this.sprite.rotation -= 90;
-	}
-}
-
-var displayOrder = new DisplayOrder();
-
-
-var gravity = new Vec2();
-gravity.Set(0,9.81);
-
-var ball = new Body();
-ball.pos.Set(10, 200);
-ball.velocity.Set(8, -8);
-ball.mass = 5.0;
-ball.sprite.width = 9.0;
-ball.sprite.height = 14.0;
-ball.sprite.rotation = 0.0;
-ball.sprite.img.src = "missile.png";
-
-var water = new Sprite();
-water.img.src = "water.png";
-water.width = 1020;
-water.height = 600;
-water.x = 0;
-water.y = 300;
-
-displayOrder.AddAt(ball.sprite,0);
-displayOrder.AddAt(water,1);
-
-function Update()
-{
-	ball.Update();
-	
-	if(ball.pos.y > 300)
-	{
-		ball.friction.Set(15.0,15.0);
-	}
-	else
-	{
-		ball.friction.Set(0.0,0.0);
-	}
-	
-	Draw();
-}
-
-function Draw()
-{
-	context.clearRect(0,0,canvas.width,canvas.height);
-	//ball.Draw(canvas);
-	displayOrder.Draw(canvas);
-}
-
-function Start()
-{
-	var myTimer = setInterval(Update, 1000/FPS);
-}
-
-
-
-
-*/
