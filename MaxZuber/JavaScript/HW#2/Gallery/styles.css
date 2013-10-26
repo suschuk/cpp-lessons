@@ -1,0 +1,63 @@
+#img_main
+{
+display:block;
+	
+}
+#warper
+{
+	text-align:center;
+	
+	border:2px solid black;
+	width:500px;
+	padding:20px;
+	background:gray;
+	
+	box-shadow:  10px 2px 10px rgba(0,0,0,0.5);
+	border-radius:5px;
+}
+#imgBlock
+{
+	position:relative;
+	margin-top : 20px;
+	
+	
+}
+#main_img
+{
+	position:relative;
+}
+#imgWarper
+{
+width:320px;
+height:240px;
+border:2px solid red;
+overflow:hidden;
+margin:0 auto;
+border-radius:10px;
+background-color:white;
+}
+#imgBlock > img
+{
+
+	display:inline-block;
+}
+
+#bk:hover
+{
+	background-color:white;
+}
+#playPause:hover
+{
+	background-color:white;
+}
+#fwd:hover
+{
+	background-color:white;
+}
+
+#secondimg
+{
+	top :-100%;
+	position:relative;
+	left:-999;
+}

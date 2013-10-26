@@ -1,0 +1,128 @@
+
+
+div#time
+{
+	border: 4px solid green;
+	width:600px;
+	margin:0 auto;
+	
+	margin-top : 10px;
+	height:150px;
+	text-align:center;
+	
+	background-color:black;
+	
+	font-size:800%;
+	
+	font-weight:700;
+	font-family:Helvetica;
+	
+	border-radius:20px;
+	color:white;
+}
+div#day
+{
+
+	width: 600px;
+	height: 40px;
+	text-align:center;
+	margin: 0 auto;
+	margin-top: 5px;
+	color:#C2C2C2;
+	
+	font-family:Helvetica;
+	word-spacing: 10px;
+	
+	font-size:200%;
+	font-weight: 700;
+	
+	
+	
+}
+div#clock
+{
+
+
+	width: 800px;
+	border: 1px solid black;
+	position:relative;
+}
+
+span#days span
+{
+	color: red;
+}
+
+div#clock
+{
+	background-color: black;
+	margin: 0px auto;
+	padding:10px;
+	padding-bottom:20px;
+	border-radius:15px;
+}
+
+div#clock_body
+{
+	position:absolute;
+	width:1000px;
+	height:auto;
+	background-color: #333333;
+	text-align:center;
+
+	padding-bottom:20px;
+	
+	border-radius:5px;
+}
+div#clock_body  h1
+{
+	font-family:monospace; 
+	color: white; 
+	margin:25 0 5 0;
+
+}
+
+div#clock_styles ul
+{
+	position:relative;
+	display:block;
+}
+div#clock_styles ul  li
+{
+	position:relative;
+
+	list-style:none;
+}
+
+#minus, #plus, #sizeCurentValue
+{
+display:inline-block;
+
+padding: 0px 5px; 
+margin:0px;
+border: 5px solid gray;
+
+border-radius: 3px;
+}
+
+#sizeCurentValue
+{
+text-align:center;
+	width:100px;
+}
+
+ul#ul_style 
+{
+	
+	width:300px;
+	margin:0 auto;
+}
+ul#ul_style > li
+{
+	text-align:left;
+}
+
+ul#font li:hover
+{
+	color:white;
+}

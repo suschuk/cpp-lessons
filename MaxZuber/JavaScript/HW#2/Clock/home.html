@@ -1,0 +1,47 @@
+<html>
+
+<head> 
+
+	<script src="code.js" type="text/javascript"> </script>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	</head>
+
+<body onload="setDay(); setTime(); fontStyle(); load();">
+
+
+	<div id="clock_body">
+		<h1> Digital Watch </h1>
+		<div id="clock" >
+			<div id="day" > 
+			</div>
+			<div id="time">
+			</div>
+		</div>
+		
+		<div id="clock_styles"> 
+			<h1 style = "display:block;" onclick="shClockStyle();"> <span style="border-bottom:1px dotted gray">Clock Style's </span></h1>
+			
+			<ul id="ul_style">
+				<li> 
+					<span> Font size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span id="minus" onclick="mn();">  - </span> <span id="sizeCurentValue"> cureent size </span> <span id="plus" onclick="pl();"> + </span>
+				</li>
+				<li > <span style="border-bottom:1px dotted gray" onclick="display2();">Font-Family  </span>
+					<ul id="font">
+						<li id="f1" onclick="fGeneva();">Geneva</li>
+						<li id="f2" onclick="fArial();">Arial</li>
+						<li id="f3" onclick="fHelvetiva();">Helvetica</li>
+						<li id="f4" onclick="fSS();">Sans-Serif</li>
+					
+					</ul>
+				
+				</li>
+			
+			</ul>
+						
+		</div>
+		
+	</div>
+</body>
+
+
+</html>
