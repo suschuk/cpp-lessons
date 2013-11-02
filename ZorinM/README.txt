@@ -2,6 +2,18 @@ Content
 DZ
 
 =============================================================
+JavaScript
+	polymorphism
+	draw_shapes
+
+	lessons03
+	DZ_03_01 -  клас Menu
+	DZ_03_02 -  клас "Книга
+	
+	lessons02
+	DZ_02_02 - Business Card
+	DZ_02_01 - Array
+=============================================================
 html
 	dz03 - drop menu and myBlog layout HTML5
 	dz02 - HTML5 layout
