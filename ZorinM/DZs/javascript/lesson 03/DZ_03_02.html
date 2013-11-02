@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+	</head>
+	
+	<body>
+		<b>Завдання 2</b><br />
+		Створити клас "Книга", в якому міститься інформація про: автор, рік видання, кількість сторінок та ціна. 
+		Створити на базі даного класу 4 книги. Організувати введення, виведення в відсортованому по року видання інформації про книги, 
+		а також організувати пошук необхідної книги та редагування інформації про неї.
+
+		<br /><br />
+		<a id="add"><b>add record</b></a> &nbsp;  &nbsp; 
+		<a id="search"><b>search</b></a> &nbsp;  &nbsp; 
+		
+		<a id="show_hide"><b>show / hide</b></a> &nbsp;  &nbsp; 
+		
+		
+		<div id="search_res">
+			<div id="title_bar">
+				Search result
+				<div id="close_"> &times; </div>
+			</div>
+			<div id="search_res_content">
+			</div>
+		</div>
+		
+		
+		<table id="t1" cellpadding="1">
+		</table>
+
+		<script type="text/javascript">
+		
+			function comp(a, b) {
+				
+				// alert(a.name);
+				if(a.year < b.year)
+					return -1;
+				else if (a.year > b.year)
+					return 1;
+					
+				return 0;
+			}
+			
+			function Book(t, a, y, pg, pr) {
+				this.title = t;
+				this.author = a;
+				this.year = y;
+				this.pages = pg;
+				this.price = pr;
+			}
+
+			function getTable(arr) {
+				var res = "<table>";
+				res += "<tr><th>Назва</th><th>Автор</th><th>Рік&nbsp;видання</th><th>Кіль&nbsp;стр</th><th>Ціна</th></tr>"
+				for (var i = 0; i < arr.length; i++)
+					res += "<tr> <td>" + books[i].title  + "</td>" +
+								"<td>" + books[i].author + "</td>" +
+								"<td>" + books[i].year   + "</td>" +
+								"<td>" + books[i].pages  + "</td>" +
+								"<td>" + books[i].price  + "</td></tr>";				
+					res += "</table>";
+				return res;
+			}
+			
+			function show() {
+				var temp = document.getElementById("search_res");
+				var temp2 = document.getElementById("title_bar");
+				var temp3 = document.getElementById("close_");
+			
+				if(temp.style.visibility  == 'hidden') {
+					temp.style.visibility='visible';
+					temp2.style.visibility='visible';
+					temp3.style.visibility='visible';
+					temp.style.height  = 'auto';
+					return true;
+				}
+				return false;
+			}
+			
+			function hide() {
+				var temp = document.getElementById("search_res");
+				var temp2 = document.getElementById("title_bar");
+				var temp3 = document.getElementById("close_");
+
+				temp.style.height = '0px';
+				temp.style.visibility  = 'hidden';
+				temp2.style.visibility = 'hidden';
+				temp3.style.visibility = 'hidden';
+			}
+
+			function delete_rec(i) {
+				var Answ = document.getElementById("t1");
+				books.splice(i, 1);
+				books.sort(comp);
+				Answ.innerHTML = getTable(books);
+				document.getElementById("search_res_content").innerHTML = " &nbsp; record " + i + " was deleted";
+			}
+			
+			function edit_rec (i) {
+				books[i].title = prompt("Введіть назву книги", books[i].title);
+				books[i].author = prompt("Введіть автора книги", books[i].author);
+				books[i].year = prompt("Введіть рік видання", books[i].year);
+				books[i].pages = prompt("Введіть кількість сторінок", books[i].pages);
+				books[i].price = prompt("Введіть ціну (грн)", books[i].price);
+				books.sort(comp);
+				Answ.innerHTML = getTable(books);
+			}
+			
+			var books = Array(
+					new Book("Язык програмирования C++. Лекции и упражнения", "Страуструп Бьярне", 2003, 912, 229.69),
+					new Book("Язык програмирования C", "Прата Стивен", 2012, 960, 256.76),
+					new Book("Advanced Use Case Modeling. Software Systems", "Frank Armour", 2001, 425, 193.02),
+					new Book("Паскаль. Turbo Pascal i Delphi", "Глинський Ярослав", 2009, 824, 360.25)
+					
+				);
+			
+			var Answ = document.getElementById("t1");
+				
+			books.sort(comp);
+			hide();
+			Answ.innerHTML = getTable(books);
+			document.getElementById("close_").onclick = function() { hide(); };
+			
+			document.getElementById("add").onclick = function() { 
+				var title = prompt("Введіть назву книги", "");
+				var author = prompt("Введіть автора книги", "");
+				var year = prompt("Введіть рік видання", "");
+				var pages = prompt("Введіть кількість сторінок", "");
+				var price = prompt("Введіть ціну (грн)", "");
+				var add = new Book(title, author, year, pages, price);
+				books.push(add);
+				books.sort(comp);
+				Answ.innerHTML = getTable(books);
+			}
+			
+			document.getElementById("search").onclick = function() {
+				var search = prompt("Введіть строку пошуку", "search"); 
+				document.getElementById("search_res_content").innerHTML = "";
+				show();
+				
+				for(var i = 0; i < books.length; i++) {
+					if(books[i].title.search(search) != -1){
+						document.getElementById("search_res_content").innerHTML = 
+							" &nbsp; <i>was found</i><br /> &nbsp; \"" + books[i].title + "\" by " + books[i].author + "<br />" +
+							"<a onclick = 'delete_rec(" + i + ");'><small>delete</small> &nbsp; " +
+							"<a onclick = 'edit_rec(" + i + ");'><small>edit</small> &nbsp; ";
+						break;
+					}
+					else
+						document.getElementById("search_res_content").innerHTML = "<br />no matches found<br />";
+				}
+			} 
+			
+			document.getElementById("show_hide").onclick = function() {
+				//alert(show());
+				(!show()) ? hide() : show();
+			} 
+			
+			
+		</script>
+
+
+	</body>
+</html>

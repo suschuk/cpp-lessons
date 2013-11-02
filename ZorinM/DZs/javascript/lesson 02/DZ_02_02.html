@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251" />
+		<script type="text/javascript">
+		<!--
+		-->
+		</script>
+	</head>
+	
+	<body style="font-family: Arial; font-size: 90%;">
+
+	
+		<h2>Завдання 2</h2>
+		<p>Написати скрипт, що просить в користувача заповнити візитну картку, тобто ввести ПІБ, посаду та телефон.<br />
+		Перевірити ввід користувача на наявність недопустимих символів в ПІБ (будь-які символи, крім літер, пропусків, крапки).<br />
+		Створити масив з трьох працівників та вивести про них інформацію на екран в відсортованому по прізвищу працівника порядку. <br />
+		Посади працівників повинні виводитись в верхньому регістрі.<br />
+		<b>Примітка!</b> Недопустимі символи можна задати у вигляді рядка</p>
+			
+			<script type="text/javascript">
+				
+				// клас Employee
+				function Employee(fName, sName, pos, phNumber){
+					this.firstName  = fName;
+					this.secondName = sName;
+					this.position 	= pos;
+					this.phoneNumber = phNumber;
+					
+					this.show = showEmployee;
+				
+					this.enterFirstName = enterFirstName;
+					this.enterSecondName = enterSecondName;
+					this.enterPosition = enterPosition;
+					this.enterPhoneNumber = enterPhoneNumber;
+					
+					return this;
+				}
+				
+				function enterFirstName() {
+				
+					var exp1 = new RegExp('^[А-Я]{1}[а-я]');
+					var firstName;
+					
+					while(true) {
+						firstName = prompt("Призвіще: ", this.firstName);
+						if(exp1.test(firstName)) {
+							this.firstName = firstName;
+							break;
+						}
+						else
+							wrongSymb();
+					}
+				}
+				
+				function enterSecondName() {
+				
+					var exp1 = new RegExp('^[А-Я]{1}[а-я]');
+					var secondName;
+					
+					while(true) {
+						secondName = prompt("Ім'я: ", this.secondName);
+						if(exp1.test(secondName)) {
+							this.secondName = secondName;
+							break;
+						}
+						else
+							wrongSymb();
+					}
+				}
+
+				function enterPosition() {
+					var exp = new RegExp('^[а-я]');
+					
+					while(true) {
+						position = prompt("Посада: ", "");
+						if(exp.test(position)) {
+							this.position = position;
+							break;
+						}
+						else
+							wrongSymb();
+					}					
+				}
+				
+				function enterPhoneNumber(){
+					var exp3 = new RegExp('^[0-9]');
+					
+				while(true) {
+					phoneNumber = prompt("Телефон: ", "");
+					if(exp3.test(phoneNumber)) {
+						this.phoneNumber = phoneNumber;
+						break;
+					}
+					else
+						wrongSymb();
+				}
+
+					
+				}
+				
+				function showEmployee() {
+					
+					document.write( "<b>" + this.firstName + " 	" + 
+					this.secondName + "</b><br />" +
+					"<i>" + this.position + "</i><br />" +
+					"тел. " + this.phoneNumber + "<br /><br />");				
+				}
+				
+				function wrongSymb() {
+					alert("Помилка! Недопустимі символи\nВведіть ще раз");
+				}
+			
+				function compFirstName(a, b) {
+				
+					if(a.firstName < b.firstName)
+						return -1;
+					else if (a.firstName > b.firstName)
+						return 1;
+						
+					return 0;
+				}
+				
+				
+				var workers = new Array();
+				workers[0] = new Employee("Пупкін", "Василь", "начальник", 		"223344");
+				workers[1] = new Employee("Бубкін", "Петро",  "інженер", 		"443322");
+				workers[2] = new Employee("Зубкін", "Іван",   "прибиральник", 	"998877");
+				
+				
+				for(var i = 0; i < workers.length; i++)
+					workers[i].show();
+				
+				document.write("<u>Після сортування по призвіщу</u>: <br /><br />");
+				workers.sort(compFirstName);
+
+				for(var i = 0; i < workers.length; i++)
+					workers[i].show();
+				// worker1.enterPhoneNumber();
+				// worker1.show();
+				
+			</script>
+
+			
+	</body>
+</html>

@@ -1,0 +1,30 @@
+body {
+	margin: 0 auto;
+	font-family: Arial, sans-serif;
+}
+
+table, td, th {
+	border: 1px solid black;
+}
+
+#search_res {
+	/*
+	position: relative; 
+	*/
+	width: 600px; 
+	margin: 5px;  
+	background-color: #ccc; 
+}
+
+#search_res_content {
+	width: 100%;
+	background-color: #ddd; 
+}
+
+#close_ {
+	float: right;
+	background-color: red;
+	color: white;
+	width: 28px;
+	text-align: center;
+}

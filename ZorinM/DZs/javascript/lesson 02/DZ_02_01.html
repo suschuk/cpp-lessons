@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251" />
+		<script type="text/javascript">
+		<!--
+		-->
+		</script>
+	</head>
+	
+	<body style="font-family: Arial; font-size: 90%;">
+		<h2>Завдання 1</h2>
+		<p>Написати скрипт, що виводить елементи масиву в звичному для людини вигляді.<br />
+		Тобто, якщо в нас існує масив на один елемент, то він і виводиться. <br />
+		Якщо елементів в масиві два, то вони будуть пов’язані сполучником “і”. <br />
+		Якщо три і більше, то після першого буде поставлена кома, а останні два будуть виведені з сполучником.<br />
+		<b>Примітка!</b> Для переліку елементів масиву можна скористатись методом length </p>
+			
+
+			<script type="text/javascript">
+				var a = new Array();
+				var count = parseInt(prompt("Кількіть елементів масиву: ", ""));
+					
+				while ( isNaN(count) || count == 0) {
+					count = parseInt(prompt("Невірне значення\nвведіть корретне значення: ", ""));
+				}
+				
+				for (var i = 0; i < count; i++)
+					a[i] = parseInt(prompt("Введіть a[" + i + "]: ", ""));
+				
+				document.write("<b>Result</b>: <br />");
+				switch (count)
+				{
+					case 1:
+						document.write(a[0]);
+						break;
+					case 2:
+						document.write(a.join(" і "));
+						break;
+					default:
+						document.write(a.slice(0, count - 1).join(", "));
+						document.write(" і " + a[count - 1]);
+				}
+			</script>
+			
+			
+	</body>
+</html>

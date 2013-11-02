@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+
+
+	<style>
+		
+		a {
+			text-decoration: none;
+		}
+	</style>
+	
+	<body style="font-family: Arial; font-size: 90%;">
+		<div>
+			<b>Завдання 1</b><br/>
+			Реалізувати клас Menu, кожен пункт якого також описується окремим класом MenuItem. Релізувати динамічне створення, додавання, видалення пунктів меню.<br/><br/>
+			
+			Алгоритм дій повинен бути наступним: <br/>
+			
+			1. При старті програми запускається конструктор створення меню, який містить меню мінімум з двох пунктів: add new menu item (додати новий пункт меню) та show menu (показати меню). <br/>
+			2. При виборі пункту "add new menu item" користувача просять вказати назву нового пункта користувацького меню та встановити дію, яку воно буде здійснювати (можна вказати список доступних дій, наприклад, відкрити файл, запустити програму, вивести певну інформацію тощо). <br/>
+			3. При виборі пункту "show menu" на екран виводиться новостворене користувацьке меню, з яким можна повнофункціонально працювати. При цьому, якщо необхідно, можна вказати додатковй пункт меню для виходу в конструктор. <br/>
+			4. Якщо робота користувача завершена, він виходить з програми. <br/><br/>
+		</div>
+		
+		<b>My menu</b><br />
+		<div id="divMenuConstr" style="text-decoration: none;"></div>
+		<div id="divMenu" style="text-decoration: none; width=50px; "> &nbsp;</div>
+		
+		<canvas id="myCanvas" style="border: 1px solid red;"></canvas>
+
+
+		<script type="text/javascript">
+			
+			function drawCircle(x, y, r, color) {
+			
+				//alert ("in drawCircle");
+				//alert (x + " " + y + " " + r + " " + color);
+				var canvas = document.getElementById("myCanvas");
+				if (canvas.getContext) {
+				 	var ctx = canvas.getContext('2d');
+				 	
+				 	ctx.beginPath(x + r, y + r);
+				 	ctx.moveTo(x, y);
+				 	ctx.arc(x, y, r, 0, Math.PI * 2, true);
+				 	ctx.fillStyle= color;
+				 	ctx.fill();
+				}
+			}
+
+			function drawRectangle(x1, y1, x2, y2, color) {
+			
+				var canvas = document.getElementById("myCanvas");
+				if (canvas.getContext) {
+					var ctx = canvas.getContext('2d');
+					ctx.fillStyle= color;
+					ctx.fillRect(x1, y1, x2, y2);
+				}
+			}
+
+			function drawTriangle(x1, y1, x2, y2, x3, y3, color) {
+			
+				var canvas = document.getElementById("myCanvas");
+				if (canvas.getContext) {
+					var ctx = canvas.getContext('2d');
+					
+					ctx.beginPath();
+					ctx.moveTo(x1,y1);
+					ctx.lineTo(x2,y2);
+					ctx.lineTo(x3,y3);
+					ctx.fillStyle= color;
+					ctx.fill();
+				}
+			}
+
+			function Menu() {
+				this.menuItems = Array();
+				
+				this.addMenuItem = function addMenuItem () {
+					var str = prompt("Enter Menu Item title", "Item#" + (this.menuItems.length + 1));
+					var act = prompt("Please, choose the action: \n\n1 - to draw circle\n2 - to draw rectangle\n3 - to draw triangle", 1);
+					this.menuItems.push(new MenuItem(str, act));
+					this.showMenu();
+				}
+				
+				this.showMenu = function showMenu() {
+					
+					var menuDivT = document.getElementById("divMenu");
+					var menuText = "";
+					
+					for (var i = 0; i < this.menuItems.length; i++) {
+						if(this.menuItems[i].action == 1)
+							var act = "drawCircle(" + (80 + i * 160) + ", 80, 65, \"#ff0000\");";	
+						else if(this.menuItems[i].action == 2) 					
+							var act = "drawRectangle(" + (15 + i * 160) + ",  15, 150, 100, \"#0000ff\");";	
+						else if(this.menuItems[i].action == 3) 					
+							var act = "drawTriangle(" + (80 + i * 160) + ", 15, 145, 160, 15, 160, \"#00ff00\");";	
+
+						menuText += "<a href = '#' onclick = '" + act + "'><b>" + this.menuItems[i].title + "</b></a>&nbsp; &nbsp; ";
+					}
+						
+					menuDivT.innerHTML = menuText;
+				} 
+			}
+
+			function MenuItem( title, action ) {
+				this.title = title;
+				this.action = action;
+			}
+			
+			// конструктор
+			var myMenu = new Menu;
+			var canv = document.getElementById("myCanvas");
+			var divMenuConstr = document.getElementById("divMenuConstr");
+			
+			divMenuConstr.innerHTML = "<a href = '#' onclick='myMenu.showMenu();'>" + "<i>show menu</i>" + "</a>  &nbsp; &nbsp; &nbsp;" + 
+									  "<a href = '#' onclick='myMenu.addMenuItem();'>" + "<i>add menu</i>" + "</a> ";
+		
+			canv.width   = document.body.scrollWidth - 50;
+			canv.height  = document.body.scrollHeight - 50;	
+			
+		</script>
+	
+	<br /><br />
+		<br />
+
+		<script type= "text/javascript">
+
+		</script>
+		
+	</body>
+</html>

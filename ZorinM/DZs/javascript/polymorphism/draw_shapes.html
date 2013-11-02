@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+	
+	<body style="font-family: Arial; font-size: 90%;">
+		<canvas id="myCanvas" style="border: 1px solid red;"></canvas>
+	
+	<!--
+		<b>Завдання 1</b><br/>
+		Реалізувати клас Menu, кожен пункт якого також описується окремим класом MenuItem. Релізувати динамічне створення, додавання, видалення пунктів меню.<br/><br/>
+		
+		Алгоритм дій повинен бути наступним: <br/>
+		
+		1. При старті програми запускається конструктор створення меню, який містить меню мінімум з двох пунктів: add new menu item (додати новий пункт меню) та show menu (показати меню). <br/>
+		2. При виборі пункту "add new menu item" користувача просять вказати назву нового пункта користувацького меню та встановити дію, яку воно буде здійснювати (можна вказати список доступних дій, наприклад, відкрити файл, запустити програму, вивести певну інформацію тощо). <br/>
+		3. При виборі пункту "show menu" на екран виводиться новостворене користувацьке меню, з яким можна повнофункціонально працювати. При цьому, якщо необхідно, можна вказати додатковй пункт меню для виходу в конструктор. <br/>
+		4. Якщо робота користувача завершена, він виходить з програми. <br/><br/>
+	-->
+		<script type="text/javascript">
+			
+			function getWidth() {
+				if(self.innerWidth) 
+					return self.innerWidth;
+				else if (document.documentElement && document.documentElement.clientHeight)
+					return document.documentElement.clientWidth;
+				else if(document.body)
+					return document.body.clientWidth;
+				
+				return 0;
+			}
+
+			function getHeight() {
+				if(self.innerHeight) 
+					return self.innerHeight;
+				else if (document.documentElement && document.documentElement.clientWidth)
+					return document.documentElement.clientHeight;
+				else if(document.body)
+					return document.body.clientHeight;
+				
+				return 0;
+			}
+			
+			function Shape(x, y, c) {
+				this.x0 = x;
+				this.y0 = y;
+				this.color = c;
+				return this;
+			}
+			
+			function circle(x0, y0, color, r) {
+				Shape.apply( this, arguments );
+				this.radius = r;
+				
+				this.show = function () {
+					var canvas = document.getElementById("myCanvas");
+					if (canvas.getContext) {
+						var ctx = canvas.getContext('2d');
+						ctx.beginPath(x0 + r, y0 + r);
+						ctx.moveTo(x0, y0);
+						ctx.arc(x0, y0, r, 0, Math.PI * 2, true);
+						ctx.fillStyle= color;
+						ctx.fill();
+					}
+				}
+			}
+
+			function rectangle(x0, y0, color, x1, y1) {
+				Shape.apply( this, arguments );
+				this.x1 = x1;
+				this.y1 = y1;
+				this.show = function() {
+					var canvas = document.getElementById("myCanvas");
+					if (canvas.getContext) {
+						var ctx = canvas.getContext('2d');
+						ctx.beginPath();
+						ctx.moveTo(x0,y0);
+						ctx.lineTo(x0 + x1, y0);
+						ctx.lineTo(x0 + x1, y0 + y1);
+						ctx.lineTo(x0, y0 + y1);
+						ctx.fillStyle= color;
+						ctx.fill();
+					}
+				}
+			}
+			
+			function triangle(x0, y0, color, x1, y1, x2, y2) {
+				Shape.apply( this, arguments );
+				this.x1 = x1;
+				this.y1 = y1;
+				this.show = function() {
+					var canvas = document.getElementById("myCanvas");
+					if (canvas.getContext) {
+						var ctx = canvas.getContext('2d');
+						ctx.beginPath();
+						ctx.moveTo(x0,y0);
+						ctx.lineTo(x1, y1);
+						ctx.lineTo(x2, y2);
+						ctx.fillStyle= color;
+						ctx.fill();
+					}
+				}
+			}
+			
+			var canvas = document.getElementById("myCanvas");
+			canvas.width = getWidth() - 50;
+			canvas.height = getHeight() - 50;
+
+			var shapes = Array (
+								new circle(90, 90, "#ff0000", 75), 
+								new rectangle(180, 120, "green", 220, 150),
+								new triangle(450, 50, "blue", 480, 160, 620, 150)
+								);
+			
+			for (var i = 0; i < shapes.length; i++)
+				shapes[i].show();
+			
+			
+		</script>
+
+	</body>
+</html>
