@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+ 
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Drop Menu with jQuery</title>
+ 
+		<link rel="stylesheet" href="style.css" type="text/css" />
+		<script src="jquery-2.0.3.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				
+				$('.myMenu > li').bind('mouseover', openSubMenu);
+				$('.myMenu > li').bind('mouseout', closeSubMenu);
+				
+				function openSubMenu() {
+					$(this).find('ul').css('visibility', 'visible');	
+				};
+				
+				function closeSubMenu() {
+					$(this).find('ul').css('visibility', 'hidden');	
+				};
+	
+			});
+		</script>
+	</head>
+	<body>
+	
+		<ul class="myMenu">
+			<li><a href="#">File >></a>
+				<ul>
+					<li><a href="#">Open</a></li>
+					<li><a href="#">Browse</a></li>
+					<li><a href="#">Save copy as...</a></li>
+					<li><a href="#">Close</a></li>
+					<li><a href="#">Close all</a></li>
+				</ul>
+			</li>
+			
+			<li><a href="#">View >></a>
+				<ul>
+					<li><a href="#">Fit page</a></li>
+					<li><a href="#">Fit width</a></li>
+					<li><a href="#">Fit height</a></li>
+					<li><a href="#">Zoom</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Navigate >></a>
+				<ul>
+					<li><a href="#">First page</a></li>
+					<li><a href="#">Previous page</a></li>
+					<li><a href="#">Next page</a></li>
+					<li><a href="#">Last page</a></li>
+					<li><a href="#">Go to page #...</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Tools >></a>
+				<ul>
+					<li><a href="#">Hand tool</a></li>
+					<li><a href="#">Select text</a></li>
+					<li><a href="#">Select image</a></li>
+					<li><a href="#">Zoom select</a></li>
+					<li><a href="#">Sync content</a></li>
+				</ul>
+			</li>
+			
+			<li><a href="#">About</a></li>
+		</ul>
+	
+	</body>
+</html>
