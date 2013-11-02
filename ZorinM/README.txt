@@ -1,5 +1,13 @@
 Content
 DZ
+
+=============================================================
+html
+	dz03 - drop menu and myBlog layout HTML5
+	dz02 - HTML5 layout
+	dz01 - my first layout
+
+=============================================================
 Win32
 		
 	testwork - win32 api testwork
