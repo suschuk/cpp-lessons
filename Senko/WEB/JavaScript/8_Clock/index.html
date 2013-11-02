@@ -1,0 +1,104 @@
+<html>
+    <head>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		
+		<script type="text/javascript">
+	
+			var t = setInterval ("updateClock()", 1000);
+			var colorN = 0;
+			var modeN = 0;
+	
+			function updateDay () {
+				var d = new Date();
+				var n = d.getDay();
+			
+				var days = new Array ("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat");
+				var dStr = "";
+				
+				for (var i = 0; i < days.length; ++i)
+				{
+					if (i == n)
+					{
+						dStr+="<b>"+days[i]+"</b>"+"&nbsp&nbsp&nbsp";
+					}
+					else
+					{
+						dStr+=days[i]+"&nbsp&nbsp&nbsp";
+					}
+				}
+				document.getElementById("top").innerHTML = dStr;
+				
+			}
+			function format	(n){
+					return n<10 ? "0"+n : n;
+				}	
+			
+			function updateClock () {
+				var d = new Date ();
+				
+				if (modeN == 0)
+				{
+					var dateStr = format(d.getHours())+":"+format(d.getMinutes())+":"+format(d.getSeconds());			
+				}
+				else
+				{	
+					var h = d.getHours();
+					var ad = "";
+					if (h > 12)
+					{
+						h = d.getHours()-12;
+						ad = "PM";
+					}
+					else 
+						if (h == 12)
+						{
+							ad = "PM";
+						}
+						else
+						{
+							ad = "AM";
+						}
+						
+					var m = d.getMinutes();
+					var s = d.getSeconds();
+					
+					var dateStr = format(h)+":"+format(m)+":"+format(s)+" "+ad;	
+				}
+				
+				document.getElementById("time").innerHTML = dateStr;
+			}
+			
+			function changeColor ()
+				{
+					var colors = new Array ("#8060FF", "#D51CFF", "#FF6068", "#FFE189", "#9FFF63", "#77D1FF");
+									
+					if (colorN < colors.length)
+						colorN++;
+					else
+						colorN = 0;
+				
+					document.getElementById("time").style.backgroundColor = colors[colorN];
+			}
+			
+			function changeMode()
+			{
+				if (modeN == 0)
+					modeN = 1;
+				else
+					modeN = 0;
+			}
+			
+		</script>
+		
+    </head>
+    <body onload="updateClock (); updateDay();">
+		<div>
+			<p id="top"> </p>
+			<p id="time">  </p>
+			<p id="btm"> 
+				<span class="btn" id="mode" onclick="changeMode()"> MODE </span> 
+				<span class="btn" id="color" onclick="changeColor()"> COLOR </span> 
+			</p> 
+		</div>
+	</body>
+</html>

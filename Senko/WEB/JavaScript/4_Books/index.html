@@ -1,0 +1,129 @@
+<!-- 
+
+Створити клас "Книга", в якому міститься інформація про: автор, рік видання, 
+кількість сторінок та ціна. Створити на базі даного класу 4 книги. Організувати 
+введення, виведення в відсортованому по року видання інформації про книги, 
+а також організувати пошук необхідної книги та редагування інформації про неї.
+
+-->
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TASK 4 BOOKS</title>
+    </head>
+    <body>
+    	<h1> BOOKS </h1>
+		<button type="button" onclick="addBook()">Add new book</button>
+		<button type="button" onclick="editBook()">Edit book</button>
+		<table id = "booklist" border = "5">  </table>
+   
+	
+	 <script type="text/javascript"> 
+		
+		function Book (name, author, year, pages, price)
+		{
+			this.name = name;
+			this.author = author;
+			this.year = year;
+			this.pages = pages;
+			this.price = price;
+		}
+		
+		var Library = new Array();
+		
+		Library.push( new Book("Things Fall Apart", "Chinua Achebe", 1958, 201, 50.40) );
+		Library.push( new Book("Fairy tales", "Hans Christian Andersen", 1835, 192, 35.25) );
+		Library.push( new Book("The Divine Comedy", "Dante Alighieri", 1265, 248, 61.99) );
+		Library.push( new Book("Pride and Prejudice", "Jane Austen", 1813, 147, 32.15) );
+		Library.push( new Book("Don Quixote", "Miguel de Cervantes", 1605, 354, 61.35) );
+		
+		function compare(a,b) {
+			if (a.year < b.year)
+				return -1;
+			if (a.year > b.year)
+				return 1;
+			return 0;
+		}
+
+		Library.sort(compare);
+		
+		function show () 
+		{
+			var r_str = '<tr> <th>Name</th> <th>Author</th> <th>Year</th> <th>Pages</th> <th>Price</th> </tr>';
+			
+			for (var i = 0; i < Library.length; ++i)
+			{
+				r_str+="<tr> <td>"+Library[i].name+"</td> <td>"+Library[i].author+"</td> <td>"+ Library[i].year+"</td> <td>"+Library[i].pages+"</td> <td>"+ Library[i].price+"</td> </tr>";
+			}
+			
+			document.getElementById("booklist").innerHTML = r_str;
+		}
+		
+		show();
+		
+		function addBook ()
+		{
+			var n = prompt("Book name:");
+			var a = prompt("Book author:");
+			var y = prompt("Book year:");
+			var pg = prompt("Book pages:");
+			var pr = prompt("Book price:");
+			
+			Library.push( new Book(n, a, y, pg, pr) );
+			Library.sort(compare);
+			show();
+		}
+		
+		function editBook ()
+		{
+			var searchName = prompt("Enter book name, which data you want to edit:");
+						
+			var bookId;
+			
+			for (var i = 0; i < Library.length; ++i)
+			{
+				if (Library[i].name == searchName)
+				{
+					bookId = i;
+					break;
+				}
+				else
+				{
+					bookId = -1; //not found
+				}
+			}
+			
+			if (bookId == -1)
+			{
+				alert("Book not found !");
+			}
+			else
+			{
+				var n = prompt("Book name:", Library[bookId].name);
+				var a = prompt("Book author:", Library[bookId].author);
+				var y = prompt("Book year:", Library[bookId].year);
+				var pg = prompt("Book pages:",Library[bookId].pages);
+				var pr = prompt("Book price:", Library[bookId].price);
+			
+			Library[bookId].name = n;
+			Library[bookId].author = a;
+			Library[bookId].year = y;
+			Library[bookId].pages = pg;
+			Library[bookId].price = pr;
+			
+			Library.sort(compare);
+			show();
+			
+			}
+		}
+		
+	</script>
+	
+
+	
+	 </body>
+	
+</html>
+

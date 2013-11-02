@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TASK 7 MAX ELEMENT</title>
+		
+		<script type="text/javascript"> 
+		
+			function getRandom(min, max)
+			{
+				return Math.floor(Math.random() * (max - min + 1)) + min;
+			}
+		
+			function arrMax()
+			{
+				var max = this[0];
+				
+				for (var i = 1; i < this.length; ++i)
+				{
+					if (this[i] > max)
+						max = this[i];
+				}
+				
+				return max;
+			}
+			
+			Array.prototype.max = arrMax;
+			
+			var arr = new Array;
+			
+			for (var i = 0; i < 5; ++i)
+			{
+				arr[i] = getRandom(0, 50);
+			}
+			
+			var m = arr.max();
+			alert (m);
+			
+		</script>
+		
+    </head>
+    <body>
+    </body>
+	
+</html>
+

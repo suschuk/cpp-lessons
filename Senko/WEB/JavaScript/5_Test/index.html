@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TASK 5 TEST</title>
+    </head>
+    <body>
+    	<h1> TEST </h1>
+		<div id = "admin">
+		<button id = "add" type="button" onclick="addQuestion()">Add new question</button>
+		<button id = "del" type="button" onclick="delQuestion()">Delete question </button>
+		<button type="button" onclick="runTest()">Run test </button>
+		<table id = "questions" border = "5">  </table>
+		</div>
+		
+		<div id="testing">
+		
+		</div>
+		
+	
+	 <script type="text/javascript"> 
+		
+		function Question (text, answer)
+		{
+			this.text = text;
+			this.answer = answer;
+		}
+		
+		var Test = new Array();
+		
+		Test.push( new Question("Is the Earth flat ?", "no") );
+		Test.push( new Question("Is Paris capital of France ?", "yes") );
+		Test.push( new Question("Is Everest the highest peak ?", "yes") );
+	
+		function show () 
+		{
+			var r_str = '<tr> <th>#</th> <th>Question</th> <th>Answer</th> </tr>';
+			
+			for (var i = 0; i < Test.length; ++i)
+			{
+				r_str+="<tr> <td>"+(i+1)+"</td> <td>"+Test[i].text+"</td> <td>"+ Test[i].answer+"</td> </tr>";
+			}
+			
+			document.getElementById("questions").innerHTML = r_str;
+		}
+		
+		show();
+		
+		function addQuestion ()
+		{
+			var text = prompt("Enter a question:");
+			var answer = prompt("Enter an answer:", "yes");
+						
+			Test.push( new Question(text, answer) );
+			
+			show();
+		}
+		
+		function delQuestion ()
+		{
+			var questionId = parseInt(prompt("Delete question #:"));
+			questionId--;
+			
+			
+
+			if ((questionId < 0) || (questionId > Test.length))
+				alert("Incorrecrt question number !")
+				else
+				{
+					Test.splice(questionId, 1);
+					show();
+				}	
+		}
+		
+		
+		function runTest ()
+		{
+			//document.getElementById("questions").innerHTML = "";
+			var bkp = document.getElementById("admin").innerHTML;
+			document.getElementById("admin").innerHTML = "";
+			
+			var result = 0;
+			
+			for (var i = 0; i < Test.length; ++i)
+			{
+				if (confirm(Test[i].text))
+				{
+					if (Test[i].answer == "yes")
+						result++;
+				}
+				else
+				{
+					if (Test[i].answer == "no")
+						result++;
+				}
+			}
+			
+			alert ("Your result: " +result + " ("+ (result/Test.length*100).toFixed(2) +"% )");
+			
+			document.getElementById("admin").innerHTML = bkp;
+		}
+	</script>
+	
+
+	
+	 </body>
+	
+</html>
+

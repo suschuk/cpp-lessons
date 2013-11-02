@@ -1,53 +1,93 @@
+<!-- 
+
+Завдання 2
+Написати скрипт, що просить в користувача заповнити візитну картку, 
+тобто ввести ПІБ, посаду та телефон. Перевірити ввід користувача на 
+наявність недопустимих символів в ПІБ (будь-які символи, крім літер, пропусків, 
+крапки). Створити масив з трьох працівників та вивести про них 
+інформацію на екран в відсортованому по прізвищу працівника порядку. 
+Посади працівників повинні виводитись в верхньому регістрі.
+Примітка! Недопустимі символи можна задати у вигляді рядка.
+
+-->
+
+
 <!DOCTYPE html>
 <html>
     <head>
-        <script type="text/javascript"> 
-			
-		function getRandom(min, max)
-		{
-			return Math.floor(Math.random() * (max - min + 1)) + min;
-		}
-
-			
-		var size = getRandom (1, 10); 
-		var arr = new Array ();		
-			
-		for (var i=0; i<size; i++)
-		{
-			arr[i] = i;			
-		}
-				
-		var rStr = "";
-		
-		if (size == 1)
-		{
-			rStr = arr[0];
-		}
-		else 
-			if (size == 2)
-			{
-				rStr = arr[0] + " and " + arr[1];
-			}
-			else
-			{
-				for (var i = 0; i < (size-1); i++)
-				{
-					rStr += arr[i];
-					if (i != (size-2))
-						rStr += ", ";
-				}
-				rStr += " and ";
-				rStr += arr[size-1];
-			}
-
-		alert(rStr);
-		
-		
-		</script>
-        <title>TASK 1 ARRAY</title>
+        <title>TASK 2 PERSON</title>
     </head>
     <body>
-    	
+    	<h1> WORKERS </h1>
+		<h2 id = "_workesrs"> </h1>
     </body>
+	
+	 <script type="text/javascript"> 
+		
+		var str = new RegExp('^[a-z A-Z ?.]+$');
+		
+        function nameTest(lname)
+		{
+            if (!str.test(lname)) 
+			{
+                alert("Name may include: lettes A-Z and symbol '.'\nEnter correct name, please.");
+				return false;
+            }
+            else 
+			{
+				return true;
+            }
+    	}	
+		
+		
+		function Person (n, t, p)
+		{
+			this.name = n;
+			this.phone = t;
+			this.post = p;
+		}
+		
+		var arr = new Array();
+		
+		for (var i = 0; i<3; ++i)
+		{	
+			var t_result = false;
+			while (t_result != true)		
+			{
+				var t_name = prompt("Enter name: ");
+				t_result = nameTest(t_name)
+			} 
+			
+			
+			var t_phone = prompt("Enter phone number: ");
+			var t_post = prompt("Enter post: ");
+			
+			var tmp = new Person(t_name, t_phone, t_post);
+		
+			arr[i] = tmp; 
+		//	alert(arr[i].name+" "+arr[i].phone+" "+arr[i].post);
+		}
+		
+		function compare(a,b) {
+			if (a.name < b.name)
+				return -1;
+			if (a.name > b.name)
+				return 1;
+			return 0;
+		}
+
+		arr.sort(compare);
+		
+		
+		var r_str = '';
+			
+			for (var i = 0; i < arr.length; ++i)
+			{
+				r_str+=(i+1)+") " + arr[i].name+" "+arr[i].phone+" "+arr[i].post+ "<br>";
+			}
+			
+			document.getElementById("_workesrs").innerHTML = r_str;		
+	</script>
+	
 </html>
 

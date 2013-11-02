@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TASK 6 LINK</title>
+		
+		<script type="text/javascript"> 
+		
+			function cutStr (inStr, idx)
+			{
+				_str = '';
+				
+				for (var i = idx; i < inStr.length; ++i)
+					_str+=inStr[i];
+					
+				return _str;
+			}
+		
+			var link = prompt("Enter some link:", "http://www.ufa.com.ua/utilites/hdd/out.php?sort=2");
+			var tmp = link;
+			
+			var prtIdx = tmp.indexOf("//");
+			var prtStr = tmp.slice(0, prtIdx);
+			tmp = cutStr(tmp, prtIdx+2);
+			
+			var hstIdx = tmp.indexOf("/");
+			var hstStr = tmp.slice(0, hstIdx);
+			tmp = cutStr(tmp, hstIdx);
+			
+			var pathIdx = tmp.lastIndexOf("/")+1;
+			var pathStr = tmp.slice(0, pathIdx);
+			tmp = cutStr(tmp, pathIdx);
+			
+			var fileIdx = tmp.indexOf("?");
+			var fileStr = tmp.slice(0, fileIdx);
+			tmp = cutStr(tmp, fileIdx);
+			
+			var reqStr = tmp.slice(1, tmp.length);
+			
+			alert("Protocol: "+prtStr+"\n"+"Host: "+hstStr+"\n"+"Path: "+pathStr+"\n"+"File: "+fileStr+"\n"+"Request: "+reqStr);
+			
+		</script>
+		
+    </head>
+    <body>
+    </body>
+	
+</html>
+
