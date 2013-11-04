@@ -7,8 +7,8 @@ jQuery
 	
 =============================================================
 JavaScript
-	polymorphism
-	draw_shapes
+	Bubble demo
+	polymorphism - draw_shapes
 
 	lessons03
 	DZ_03_01 -  клас Menu
