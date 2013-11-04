@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			.first{
+				width: 500px;
+				height: 500px;
+				background: #0000ff;
+				position: relative;
+			}
+			.second{
+				background: #ff0000;
+				position: absolute;
+				top: 100px;
+				left: 100px;
+				height: 300px;
+				width: 300px;
+			}
+			.third{
+				background: #00ff00;
+				position: absolute;
+				top: 	75px;
+				left: 	75px;
+				height: 150px;
+				width: 	150px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<h1>Bubling demo</h1>
+		<div class="first">
+			<div class="second">
+				<div class="third"">
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			var arr = document.getElementsByTagName("div");
+
+			for(var i=0; i < arr.length; i++) {
+				arr[i].onclick = function(e) {
+					e = e || event;
+					var target = e.target || e.srcElement;
+					this.style.backgroundColor='yellow';
+					alert("now is selected = "+ this.className);
+					this.style.backgroundColor = '';
+				}
+			}
+		</script>
+
+		
+	</body>
+</html>
+
