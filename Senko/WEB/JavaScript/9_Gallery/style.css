@@ -1,0 +1,27 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+span.btn {
+	border-style: solid;
+	border-color: black;
+	border-width: 0.2px;
+	padding-left: 10px;
+	padding-right: 10px;
+	
+	margin-left: 5px;
+	margin-right: 5px;
+	cursor: pointer;
+	background-color: #A0A0A0;
+}
+
+div	{
+	margin-left: 20%;
+	margin-right: 20%;
+	margin-top: 10%;
+}		
+
+button {		
+	min-width: 100px;
+}

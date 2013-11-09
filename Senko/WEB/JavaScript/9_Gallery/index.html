@@ -1,0 +1,67 @@
+<html>
+    <head>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+<body>
+	<div>
+		<img src="../9_Gallery/images/1.jpg" name="picture" /> <br>
+		<button type="button" onclick="prevImage()"> << </button>
+		<button id="slide" type="button" onclick="auto()"> Play </button>
+		<button type="button" onclick="nextImage()"> >> </button>
+	</div>
+	
+    <script type="text/javascript">
+		var pl_status = 0;
+		var timerId = 0;
+		var currentImage = 0, count = 0;
+        var path = new Array("../9_Gallery/images/1.jpg", "../9_Gallery/images/2.jpg", "../9_Gallery/images/3.jpg", "../9_Gallery/images/4.jpg");
+		var img = new Array ();		
+		
+		for (var i=0; i < path.length; i++) {
+			img[i] = new Image (640, 480);
+			img[i].src = path[i];			
+			img[i].onload = countImages;
+		}        
+
+		function countImages () {
+			count++;
+			if (count == path.length)
+				return;			
+		}
+		
+        function nextImage() {
+			if (currentImage == path.length-1) 
+                currentImage = 0;
+			else
+				currentImage++;
+				
+            document.images["picture"].src = img[currentImage].src;
+        }
+		
+		function prevImage() {
+			if (currentImage == 0) 
+                currentImage = path.length-1;
+			else
+				currentImage--;
+            document.images["picture"].src = img[currentImage].src;
+        }
+		
+		function auto() {
+			if (pl_status == 0)
+			{
+				pl_status = 1;
+				document.getElementById("slide").innerHTML = "Stop";
+				timerId = setInterval ("nextImage()", 5000);
+			}
+			else
+			{
+				clearInterval(timerId);
+				pl_status = 0;
+				document.getElementById("slide").innerHTML = "Play";
+			}
+		}
+		
+		
+    </script>
+</body>
+</html>
