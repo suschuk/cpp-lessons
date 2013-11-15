@@ -1,8 +1,10 @@
-Content
+﻿Content
 DZ
+
 
 =============================================================
 jQuery
+	parse_xml - drop Menu & parsing xml
 	DZ_01 - drop Menu
 	
 =============================================================
@@ -10,9 +12,15 @@ JavaScript
 	Bubble demo
 	polymorphism - draw_shapes
 
-	lessons03
+	lessons05
+	DZ_05_01 -  digital closk
+
+	lessons04
+	DZ_04_02 -  parse url-string
+	
+	lessons04
 	DZ_03_01 -  клас Menu
-	DZ_03_02 -  клас "Книга
+	DZ_03_02 -  клас "Книга"
 	
 	lessons02
 	DZ_02_02 - Business Card
