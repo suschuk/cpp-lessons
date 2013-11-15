@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+	
+	<body>
+		<b>Завдання 4.2</b><br />
+		Користувач в відповідь на запит програми вводить URL адресу. Потрібно розділити дану адресу на складові та вивести результат. Наприклад, користувач вводить адресу вигляду http://www.ufa.com.ua/utilites/hdd/out.php?sort=2. Після цього йому виводиться наступна інформація про дану адресу:
+
+		<br />протокол - http: 
+		<br />хост - www.ufa.com.ua 
+		<br />шлях - /utilites/hdd/ 
+		<br />ім’я файлу - out.php 
+		<br />рядок запиту - sort=2 <br /><br />
+
+		<script type="text/javascript">
+			var url = "http://www.ufa.com.ua/utilites/hdd/out.php?sort=2";
+			var regExp = /http:\/\/|https:\/\//;
+			document.write(url.search(regExp) + "<hr />");
+			var subStr = url;
+			var index;
+			if (url.search(regExp) != -1){
+				var protIndex = url.indexOf("//");
+				document.write( "протокол - " + url.substr(0, protIndex) + "<br />");
+				subStr = url.substr(protIndex + 2, url.lenght);
+			}
+			index = subStr.indexOf("/");
+			document.write( "хост - " + subStr.substr(0, index) + "<br />" );
+			subStr = subStr.substr(index + 1, subStr.lengt);
+			document.write( subStr + "<br />" );
+			
+		</script>
+
+
+	</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+	</head>
+	
+	<body onload="document.getElementById('Kyiv').style.color='red';">
+		<b>Завдання 5.1</b><br />
+		Написати власний, гарно оформлений електронний годинник. Можна з показом часу в різних часових поясах.<br />
+		<br />
+		
+		<span class="town" id="Kyiv" onclick="zone_ = kyiv();">Kyiv</span> &nbsp; &nbsp; 
+		<span class="town" id="London" onclick="zone_ = london();">London</span> &nbsp; &nbsp; 
+		<span class="town" id="Montreal" onclick="zone_ = montreal();">Montreal</span> &nbsp; &nbsp; 
+		<br /><br />
+		<canvas id="myCanvas"></canvas>
+		
+		<script type="text/javascript">
+			var canvas = document.getElementById("myCanvas");
+			canvas.width  = 640;
+			canvas.height = 480;
+			var zone_ = 0;
+			
+			function resetTowns() {
+				var towns = document.getElementsByClassName("town");
+				for (var i = 0; i < towns.length; i++)
+					towns[i].style.color = "black";
+			}
+			function kyiv() {
+				resetTowns();
+				document.getElementById("Kyiv").style.color = 'red';
+				return 0;
+			}
+			function london() {
+				resetTowns();
+				document.getElementById("London").style.color = 'red';
+				return -2;
+			}
+			function montreal() {
+				resetTowns();
+				document.getElementById("Montreal").style.color = 'red';
+				return -7;
+			}
+			
+			
+			function segSeven ( x0, y0, dir_, colon_, blink) {
+				var r = 7, k = 8, tmpX, tmpY; 
+				var mainTone = "#1b3400", halfTone = "#488a01";
+			
+				if (canvas.getContext) {
+					var ctx = canvas.getContext('2d');
+					ctx.strokeStyle = "#949494";
+					ctx.lineWidth = 1;
+					
+					function vertSeg( x_, y_, pr) {
+						ctx.beginPath();
+						//ctx.clearRect(x_ - r, y_, x_ + r, y_ + r * (k + 2));
+						ctx.moveTo(x_, y_);
+						ctx.lineTo(x_ + r, y_ + r);
+						ctx.lineTo(x_ + r, y_ + r + r * k);
+						ctx.lineTo(x_, y_ + r * (k + 2));
+						ctx.lineTo(x_ - r, y_ + r * (k + 1));
+						ctx.lineTo(x_ - r, y_ + r);
+						ctx.lineTo(x_, y_);
+						ctx.fillStyle= "#fff";
+						ctx.fill();
+						ctx.strokeStyle = "#fff";
+						ctx.stroke();
+						ctx.strokeStyle = "#949494";
+						ctx.stroke();
+						
+						if (pr) {
+							ctx.beginPath();
+							ctx.moveTo(x_, y_);
+							ctx.lineTo(x_ + r, y_ + r);
+							ctx.lineTo(x_ + r, y_ + r + r * k);
+							ctx.lineTo(x_, y_ + r * (k + 2));
+							ctx.fillStyle= mainTone;
+							ctx.fill();
+							ctx.beginPath();
+							ctx.moveTo(x_, y_ + r * (k + 2));
+							ctx.lineTo(x_ - r, y_ + r * (k + 1));
+							ctx.lineTo(x_ - r, y_ + r);
+							ctx.lineTo(x_, y_);
+							ctx.fillStyle= halfTone;
+							ctx.fill();
+						}
+					}
+					
+					function gorSeg( x_, y_, pr) {
+						ctx.beginPath();
+						ctx.moveTo(x_, y_);
+						ctx.lineTo(x_ + r, y_ + r);
+						ctx.lineTo(x_ + r * k, y_ + r);
+						ctx.lineTo(x_ + r * k + r, y_);
+						ctx.lineTo(x_ + r * k, y_ - r);
+						ctx.lineTo(x_ + r, y_ - r);
+						ctx.lineTo(x_, y_);
+						ctx.fillStyle= "#fff";
+						ctx.fill();
+						ctx.strokeStyle = "#fff";
+						ctx.stroke();
+						ctx.strokeStyle = "#949494";
+						ctx.stroke();
+
+						if (pr) {
+							ctx.beginPath();
+							ctx.moveTo(x_, y_);
+							ctx.lineTo(x_ + r, y_ + r);
+							ctx.lineTo(x_ + r * k, y_ + r);
+							ctx.lineTo(x_ + r * k + r, y_);
+							ctx.fillStyle= mainTone;
+							ctx.fill();
+							ctx.beginPath();
+							ctx.moveTo(x_ + r * k + r, y_);
+							ctx.lineTo(x_ + r * k, y_ - r);
+							ctx.lineTo(x_ + r, y_ - r);
+							ctx.lineTo(x_, y_);
+							ctx.fillStyle= halfTone;
+							ctx.fill();
+						}
+					}
+					
+					tmpX = x0; tmpY = y0;
+					gorSeg(tmpX, tmpY, dir_[0]); // a_
+					
+					tmpX = x0; tmpY = y0 + r * (k + 2) + 4;
+					gorSeg(tmpX, tmpY, dir_[1]); // g_
+					
+					tmpX = x0; tmpY = y0 + 2 * r * (k + 2) + 6;
+					gorSeg(tmpX, tmpY, dir_[2]); // d_
+					
+					tmpX = x0 - 2; tmpY = y0 + 2;
+					vertSeg(tmpX, tmpY, dir_[3]); // f_
+
+					tmpX = x0 + r * k + r + 2; tmpY = y0 + 2;
+					vertSeg(tmpX, tmpY, dir_[4]); // b_
+					
+					tmpX = x0 - 2; tmpY = y0 + r * (k + 2) + 5;
+					vertSeg(tmpX, tmpY, dir_[5]); // e_
+					
+					tmpX = x0 + r * k + r + 2; tmpY = y0 + r * (k + 2) + 5;
+					vertSeg(tmpX, tmpY, dir_[6]); // c_
+					
+					function colon(blink_) {
+						
+						function dot_ (x_, y_, blink_) {
+							
+							ctx.beginPath();	
+							ctx.moveTo(x_ + 3 * r + r, y_);
+							ctx.lineTo(x_ + 3 * r, y_ + r);
+							ctx.lineTo(x_ + 3 * r, y_ + r + 1 * r);
+							ctx.lineTo(x_ + 3 * r + r, y_ + r + 2 * r);
+							ctx.lineTo(x_ + 3 * r + 2 * r, y_ + r + 1 * r);
+							ctx.lineTo(x_ + 3 * r + 2 * r, y_ + r);
+							ctx.lineTo(x_ + 3 * r + r, y_);
+							ctx.fillStyle= "#fff";
+							ctx.fill();
+
+							ctx.strokeStyle = "#fff";
+							ctx.stroke();
+							ctx.strokeStyle = "#949494";
+							ctx.stroke();
+							
+							
+							if (blink_) {
+								ctx.beginPath();	
+								ctx.moveTo(x_ + 3 * r + r, y_);
+								ctx.lineTo(x_ + 3 * r, y_ + r);
+								ctx.lineTo(x_ + 3 * r, y_ + r + 1 * r);
+								ctx.lineTo(x_ + 3 * r + r, y_ + r + 2 * r);
+								ctx.fillStyle= halfTone;
+								ctx.fill();
+								ctx.beginPath();
+								ctx.moveTo(x_ + 3 * r + r, y_ + r + 2 * r);
+								ctx.lineTo(x_ + 3 * r + 2 * r, y_ + r + 1 * r);
+								ctx.lineTo(x_ + 3 * r + 2 * r, y_ + r);
+								ctx.lineTo(x_ + 3 * r + r, y_);
+								ctx.stroke();
+								ctx.fillStyle= mainTone;
+								ctx.fill();
+	
+							}
+						}
+						
+						tmpX = x0 + r * k + r + 2; tmpY = y0 + r * (k + 3) + 5;
+						dot_ (tmpX, tmpY, blink);
+						tmpX = x0 + r * k + r + 2; tmpY = y0 + r * (k - 1);
+						dot_ (tmpX, tmpY, blink);
+					} 
+					if (colon_) colon ();
+				}
+			}
+					
+	
+			function StartTime(zone_) { 
+				var d = new Date();
+				var h = d.getHours() + zone_, h1, h2;
+				var m = d.getMinutes(), m1, m2;
+				var s = d.getSeconds(), s1, s2;
+				var dir = Array (
+									// a_,g_,d_,f_,b_,e_,c_
+								Array (1, 0, 1, 1, 1, 1, 1),
+								Array (0, 0, 0, 0, 1, 0, 1),
+								Array (1, 1, 1, 0, 1, 1, 0),
+								Array (1, 1, 1, 0, 1, 0, 1),
+								Array (0, 1, 0, 1, 1, 0, 1),
+								Array (1, 1, 1, 1, 0, 0, 1),
+								Array (1, 1, 1, 1, 0, 1, 1),
+								Array (1, 0, 0, 0, 1, 0, 1),
+								Array (1, 1, 1, 1, 1, 1, 1),
+								Array (1, 1, 1, 1, 1, 0, 1),
+								Array (0, 0, 0, 0, 0, 0, 0)
+							);
+				if(h > 24) {
+					h -= 24;
+				}
+				if (h < 10)	{
+					h1 = 10;
+					h2 = h;
+				}
+				else {
+					h1 = Math.floor(h / 10);
+					h2 = h - Math.floor(h / 10) * 10;
+				}
+
+				if (m < 10)	{
+					m1 = 0;
+					m2 = m; 
+				}
+				else {
+					m1 = Math.floor(m / 10);
+					m2 = m - Math.floor(m / 10) * 10;
+				}
+
+				if (s < 10)	{
+					s1 = 0;
+					s2 = s; 
+				}
+				else {
+					s1 = Math.floor(s / 10);
+					s2 = s - Math.floor(s / 10) * 10;
+				}
+
+
+				segSeven( 10, 10,  dir[h1], 0);
+				segSeven( 100, 10, dir[h2], 1, Math.floor(s % 2));
+			
+				segSeven( 225, 10, dir[m1], 0);
+				segSeven( 315, 10, dir[m2], 1, Math.floor(s % 2));
+			
+				segSeven( 440, 10, dir[s1], 0);
+				segSeven( 530, 10, dir[s2], 0);
+				
+				//document.getElementById("myP").innerHTML = h1 + "; "+h2 + "; zone = " + zone_;
+			}
+		
+		var t = setInterval ("StartTime(zone_)", 1000);
+
+		StartTime(0); 
+		</script>
+
+
+	</body>
+</html>

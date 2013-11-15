@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="jquery.js"></script>
+		<link rel="stylesheet" href="style.css" type="text/css" />
+		<script type="text/javascript">
+			
+			$(document).ready(function(){
+				
+				$.ajax({
+					type: "GET",
+					url: "main-menu.xml",
+					dataType: "xml",
+					success: function(xml){
+					
+						var i = 0, j = 0;
+						
+						$(xml).find('main-menu-item').each(function(){
+							
+							var mainMenuTitle = $(this).find('title:first').text();
+							var mainOnClick = $(this).find('main-menu-item > onclick').text();
+							//alert (mainMenuTitle + ": " + mainOnClick);
+							
+							$("<li></li>").html( "<a href='#' id='xxx"+(i * ++j)+"'>"+mainMenuTitle+"</a>" ).appendTo("ul.myMenu");
+							if(mainOnClick != "") {
+								$('a#xxx'+(i * j)).click(function(){
+									eval(mainOnClick);
+								});
+							}
+							
+							
+							if ( ( $(this).find('submenu-item').find('title:first').text() ) != "")
+							{
+								$('ul.myMenu > li:eq('+i+')').append("<ul></ul>");
+								
+								$(this).find('submenu-item').each( function() {
+									var sub_menu_title = $(this).find('title').text();
+									var subOnClick = $(this).find('onclick').text();
+									var subOnClick = $(this).find('onclick').text();
+									var subOnHover = $(this).find('onhover').text();
+									
+									if(sub_menu_title.length != 0) {
+										$("<li></li>").html( "<a href='#'>"+sub_menu_title+"</a>" ).appendTo("ul.myMenu ul:eq("+i+")");
+										if(subOnClick != "") {
+											$('ul.myMenu ul:eq('+i+') a').click(function(){
+												eval(subOnClick);
+											});
+										}
+										if(subOnHover != "") {
+											$('ul.myMenu ul:eq('+i+') a').hover(function(){
+												eval(subOnHover);
+											});
+										}
+									}
+								});
+							i++;
+							}
+						});
+						$('ul.myMenu > li').bind('mouseover', openSubMenu);
+						$('ul.myMenu > li').bind('mouseout', closeSubMenu);
+					},
+					error: function() {
+						alert("An error occurred while processing XML file.");
+					}
+				});
+			
+			
+			function openSubMenu() {
+				$(this).find('ul').css('visibility', 'visible');	
+			};
+			
+			function closeSubMenu() {
+				$(this).find('ul').css('visibility', 'hidden');	
+			};
+
+			});
+
+		</script>
+	</head>
+		
+	<body>
+		<ul class='myMenu'>
+		</ul>
+		
+	</body>
+</html>
