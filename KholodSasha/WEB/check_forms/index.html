@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+
+<head>
+	<link rel="stylesheet" type="text/css" media="all" href="style.css">
+	<script type="text/javascript" src="js.js"></script>
+</head>
+<body>
+	<title>Registration</title>
+	<div>Hello visitor! Register, please</div>
+	<form name="regform" action="reg.html" onsubmit="return onSubmit(this);" method="post">
+		<fieldset>
+			<legend>Fill all the fields</legend>
+			First name: <br><input type="text" name="firstname"><br>
+			Last name: <br><input type="text" name="lastname"><br>
+			Password: <br><input type="password" name="pass"><br>
+			Repeat password: <br><input type="password" name="pass_check"><br>
+			e-mail: <br><input type="email" name="email"><br>
+			<input type="radio" name="sex" value="male">Male<br>
+			<input type="radio" name="sex" value="female">Female<br>
+			<input type="submit" value="Register">
+		</fieldset>
+	</form>
+</body>
+</html>

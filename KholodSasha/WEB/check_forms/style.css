@@ -1,0 +1,19 @@
+body
+{
+	background: #bbccff;
+}
+form
+{
+	background: #5758ff;
+	width: 600px;
+	border-radius: 4px;
+}
+form fieldset
+{
+	border-radius: 4px;
+}
+form input
+{
+	alignment-baseline: middle;
+	alignment-adjust: middle;
+}
