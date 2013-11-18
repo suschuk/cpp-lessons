@@ -14,11 +14,13 @@ JavaScript
 
 	lessons05
 	DZ_05_01 -  digital closk
+	DZ_05_02 -  photogalery
+	DZ_05_03 -  table create & change attributes
 
 	lessons04
 	DZ_04_02 -  parse url-string
 	
-	lessons04
+	lessons03
 	DZ_03_01 -  клас Menu
 	DZ_03_02 -  клас "Книга"
 	
