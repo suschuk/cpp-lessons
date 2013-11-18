@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+		<script src="jquery.js"></script>
+		<style>
+			img.desaturate { 
+				-webkit-filter: grayscale(100%);
+				-moz-filter: grayscale(100%);
+				filter: grayscale(100%);
+			}
+			img:hover {
+				-webkit-filter: grayscale(0%);
+				-moz-filter: grayscale(0%);
+				filter: grayscale(0%);
+			}
+			
+			table tr td{
+				border: 5px solid grey;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			function picBorder (cell) {
+				//alert("omg");
+				if(cell.style.border == "")
+					cell.style.border = "5px solid green";
+			}	
+			
+			
+			function changeClass() {
+			
+				document.getElementById("other-element").className = "open";
+			}
+			
+			function tableCreate() {
+			
+				var ImgPathes = new Array(	"g/sowa.jpg", 
+											"g/STAR_WARS.jpg", 
+											"g/gameOfThrones.jpg", 
+											"g/068.jpg");
+				var index = 0;
+			
+				var rows = prompt("How many rows? ", 3);
+				var cols = prompt("How many cols? ", 4);
+				
+				var c, r, t;
+				t = document.createElement('table');
+				t.setAttribute("id", "myTAble");
+				
+				t.onclick = function (a) {
+					if (!a) a = window.event;
+					a = a.target || a.srcElement;
+					if (a.tagName == "TD") 
+						a.style.border = "5px solid red";
+				};
+
+				for (var i = 0; i < rows; i++) {
+					r = t.insertRow(i); 
+					
+					for (var j = 0; j < cols; j++) {
+						c = r.insertCell(j);
+						c.innerHTML = "<td><img onclick = 'picBorder(this);' src = '" + ImgPathes [index >= 4 ? index = 0 : index] + "' width=150 class=\"desaturate\" ></td>";
+						
+						index++;
+					}
+				}
+				
+				document.getElementById("addtable").appendChild(t);
+			}
+
+		</script>
+
+	</head>
+	
+	<body>
+		<p>Напишіть скрипт, який дозволяє побудувати на сторінці таблицю, розмірність якої задає користувач на початку завантаження сторінки. В кожній комірці даної таблиці розміщується зображення (список зображень зберігається в масиві), яке має сіро-білу гамму кольорів (grayscale).
+		Реалізувати наступні дії:</p>
+		
+		При наведенні курсора на зображення, воно стає кольоровим. <br />
+		При кліку на комірці з зображенням рамка зображення або комірки набуває іншого кольору. <br />
+		
+		<input type="button" onclick="tableCreate();" value="Create table" />
+		<div id="addtable"></div>
+		
+	</body>
+</html>

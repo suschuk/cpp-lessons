@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+		<!--
+		<script src="jquery.js"></script>
+		-->
+		<style>
+			#pics {
+				height: 480px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<img src="g/sowa.jpg" name="pics" id="pics" /> <br />
+		
+		<button type="button" id="prev" onclick="prev()"> < prev </button>
+		<button type="button" id="slideShow" onclick="slideShow()"> Slide Show </button>
+		<button type="button" id="next" onclick="next()"> next > </button>
+		
+		<script type="text/javascript">
+			var index = 0;
+			var ifSlide = false;
+			var timerID = 0;
+			var ImgPathes = new Array(	"g/sowa.jpg", 
+										"g/STAR_WARS.jpg", 
+										"g/gameOfThrones.jpg", 
+										"g/068.jpg");
+			
+			function next() {
+				if (index >= ( ImgPathes.length - 1) ) 
+					index = 0;
+				else
+					index++;
+				if (document.images["pics"].height > 480 )
+					document.images["pics"].height = 480;
+				document.images["pics"].src = ImgPathes[index];
+			}
+				
+			function prev() {
+				if (index <= 0 ) 
+					index = ( ImgPathes.length - 1);
+				else
+					index--;
+					
+				document.images["pics"].src = ImgPathes[index];
+			}
+			
+			function slideShow() {
+				if (ifSlide == false) {
+					ifSlide = true;
+					document.getElementById("slideShow").innerHTML = "stop it";
+					document.getElementById("next").disabled = true;
+					document.getElementById("prev").disabled = true;
+					timerID = setInterval("next()", 1000);
+				}
+				else {
+					ifSlide = false;
+					clearInterval( timerID );
+					document.getElementById("slideShow").innerHTML = "Slide show";
+					document.getElementById("next").disabled = false;
+					document.getElementById("prev").disabled = false;
+				}
+			}
+			
+		</script>
+
+
+	</body>
+</html>
