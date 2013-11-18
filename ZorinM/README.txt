@@ -13,16 +13,16 @@ JavaScript
 	polymorphism - draw_shapes
 
 	lessons05
-	DZ_05_01 -  digital closk
-	DZ_05_02 -  photogalery
 	DZ_05_03 -  table create & change attributes
+	DZ_05_02 -  photogalery
+	DZ_05_01 -  digital closk
 
 	lessons04
 	DZ_04_02 -  parse url-string
 	
 	lessons03
-	DZ_03_01 -  клас Menu
 	DZ_03_02 -  клас "Книга"
+	DZ_03_01 -  клас Menu
 	
 	lessons02
 	DZ_02_02 - Business Card
