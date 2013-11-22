@@ -1,0 +1,28 @@
+#commentForm >input
+{
+	width:250px;
+	text-align:center;
+}
+
+#commentForm >textarea
+{
+	width:250px;
+}
+
+.wrongText
+{
+	box-shadow: 0 0 15px rgba(255,0,0,0.3);
+	background-color:rgba(255,0,0,0.3);
+	border-color:rgba(255,0,0,0.3);
+	
+}
+
+.goodText
+{
+	box-shadow: 0 0 15px rgba(0,255,0,0.3);
+	background-color:rgba(0,255,0,0.3);
+	border-color:rgba(0,255,0,0.3);
+	
+}
+
+
