@@ -1,0 +1,12 @@
+
+#if !defined(AFX_PAINT_BEGINNER_H__3D849A38_9222_4C64_AA09_1835F2F93ECF__INCLUDED_)
+#define AFX_PAINT_BEGINNER_H__3D849A38_9222_4C64_AA09_1835F2F93ECF__INCLUDED_
+
+#if _MSC_VER > 1000
+#pragma once
+#endif 
+
+#include "resource.h"
+
+
+#endif 
