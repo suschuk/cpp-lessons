@@ -2,7 +2,8 @@
 #include "KWnd.h"
 #include "KDocument.h"
 
-#define FILE_NAME "D:\\README.TXT"
+#define FILE_NAME "README.TXT"
+// #define FILE_NAME "README.TXT"
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
@@ -10,6 +11,9 @@ KDocument doc;
 //////////////////////////////////////////////////////////////////////
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
+	//// Output to the file of ukrainian text tested ////
+	std::locale::global(std::locale(""));
+
 	MSG msg;
 	if (!doc.Open(FILE_NAME))
 		return 0;

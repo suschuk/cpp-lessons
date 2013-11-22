@@ -4,8 +4,18 @@
 #include <tchar.h>
 
 BOOL KDocument::Open(const char* file) {
-	ifstream finp(file);
-	char buf[200];
+	wfstream finp;
+	
+	//finp.open (file);
+	//wchar_t xxx[6] = L"FUCK";
+	//
+	//finp << L"Writing this to a file... \n";
+	//finp << xxx[0] << xxx[1] << xxx[2] << xxx[3] <<  xxx[4] ;
+	//finp << L"\nWriting this to a file... \n";
+	//finp.close();
+
+	wchar_t buf[200];
+	finp.open (file, ios::in | ios::out);
 
 	if(!finp.good()) {
 		MessageBox(NULL, L"Не найден входной файл", L"Error", MB_OK);
@@ -16,7 +26,7 @@ BOOL KDocument::Open(const char* file) {
 	while(!finp.eof()) {
 		finp.getline(buf, 199);
 		buf[199] = 0;
-		lines.push_back(string(buf));
+		lines.push_back(wstring(buf));
 	}
 
 	// обрахунок максимальної довжини строки 

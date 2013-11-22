@@ -1,30 +1,24 @@
 ////////////////////////////////////////////////////////////
 // Testwork Win32: Zorin M
 #include <windows.h>
-#include "sstream"
+#include <tchar.h>
 
 #include "KWnd.h"
 #include "Maze_.h"
 
 #define xyStep 15
-#define cY  31		// Лише непарні числа
+#define cY  29	// Лише непарні числа
 #define cX  49	// Лише непарні числа
+int dX, dY, xWin, yWin;
 
-const int dX = 6, dY = 25;
-
-//////////////////
 void DrawMaze (HWND, HDC, PAINTSTRUCT, MazeRB&);
-// BOOL isWon = false;
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
 	MSG msg;
-	int xWin = cX * (xyStep - 0) + dX, yWin = cY * (xyStep - 0)  + dY;
-
-	KWnd mainWnd(L"Testwork Win32: Zorin M.", hInstance, nCmdShow, WndProc,
-				 NULL, 10, 10, xWin, yWin, CS_HREDRAW | CS_VREDRAW, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX);	
+	KWnd mainWnd(L"Testwork Win32: Zorin M.", hInstance, nCmdShow, WndProc);	
 
 	while (GetMessage(&msg, NULL, 0, 0))  {
 		TranslateMessage(&msg);
@@ -38,6 +32,14 @@ HRGN hRgn;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
+	RECT wRect, cRect;
+	GetWindowRect(hWnd, &wRect);
+	GetClientRect(hWnd, &cRect);
+	
+	dX = wRect.right - wRect.left - (cRect.right - cRect.left);
+	dY = wRect.bottom - wRect.top - (cRect.bottom - cRect.top);
+	xWin = cX * (xyStep - 0) + dX, yWin = cY * (xyStep - 0)  + dY;
+
 	int xSh = xyStep * cX - xyStep, 
 		ySh = xyStep * cY - xyStep;
 	HDC hDC;
@@ -48,18 +50,24 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	int userReply = 0;
 	static MazeRB maze(cY, cX);
 
+	//TCHAR buff[32];
+	//wsprintf( buff, TEXT("width = %d; height = %d"), dX, dY );
+
 	switch (uMsg)
 	{
 	case WM_CREATE:
 		maze.start();
+		// SetWindowText(hWnd, buff);
 		break;
 
 	case WM_PAINT:
+		MoveWindow(hWnd, 10, 10, xWin, yWin, TRUE);
+
 		hDC = BeginPaint(hWnd, &ps);
 		
 		DrawMaze(hWnd, hDC, ps, maze);
-				
-		SetBkMode(hDC, OPAQUE);
+		//SetBkMode(hDC, OPAQUE);
+
 		// фініш
 		hLinePen = CreatePen(PS_SOLID, 1, RGB(193, 1, 255));
 		hPenOld = (HPEN)SelectObject(hDC, hLinePen);
@@ -153,8 +161,8 @@ void DrawMaze(HWND hwnd, HDC hdc, PAINTSTRUCT ps, MazeRB& maze)
 	HPEN hPen0 = CreatePen(PS_SOLID, 1, RGB(120, 120, 120));
 	HPEN hOldPen = (HPEN)SelectObject(hdc, hPen0);
 
-	// for(int i = 0; i < xWin; i += xyStep) { MoveToEx(hdc, i, 0, NULL); LineTo(hdc, i, yWin); }
-	// for(int i = 0; i < yWin; i += xyStep) { MoveToEx(hdc, 0, i, NULL); LineTo(hdc, xWin, i); }
+	for(int i = 0; i < xWin; i += xyStep) { MoveToEx(hdc, i, 0, NULL); LineTo(hdc, i, yWin); }
+	for(int i = 0; i < yWin; i += xyStep) { MoveToEx(hdc, 0, i, NULL); LineTo(hdc, xWin, i); }
 
 	SelectObject(ps.hdc, GetStockObject(GRAY_BRUSH)); 
 	for (int i = 0; i < cY; i++)

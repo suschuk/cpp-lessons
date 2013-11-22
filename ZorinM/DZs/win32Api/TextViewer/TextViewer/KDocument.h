@@ -24,6 +24,6 @@ public:
 	int horzRange;  // діапазон гор. полось прокрутки
 
 private:
-	vector<string> lines; // вектор для зберігання строк документу
+	vector<wstring> lines; // вектор для зберігання строк документу
 };
 
