@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<!--
+		<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+		-->
+	</head>
+	
+	<body onload="gameStart();">
+	
+		<b>Завдання 6.1</b><br />
+		Написати сценарій, який імітує кидок ігрового кубіка. Вивід результату кидка кубіка повинен здійснюватись відповідним зображенням. Процес обертання кубіка повинен бути розтягнутим в часі, тобто сценарій повинен, наприклад, 9 раз згенерувати довільне число, виводити відповідне зображення і лише на 10-й раз зупинитись.<br />
+		<br />
+		<div id="score"><b>Ваш результат: </b></div>
+		
+		<script type="text/javascript">
+			
+			var maxDice = 6;
+			var maxDir = 4;
+
+			function sleep(delay) {
+				var start = new Date().getTime();
+				while (new Date().getTime() < start + delay);
+			}
+
+			function randDiceNum (max) {
+					return Math.round( 0.5 + ( Math.random() * max));
+			}			
+			
+			function Dice (x0, y0, id) {
+
+				var diceWidth = 60;
+				var Dice = document.createElement('div');
+				
+				Dice.setAttribute("id", id);
+				Dice.style.position = "absolute";
+				Dice.style.left = x0 + "px";
+				Dice.style.float  = "left";
+				Dice.style.top  = y0 + "px";
+				Dice.style.width  = diceWidth + "px";
+				Dice.style.height = diceWidth + "px";
+				Dice.style.background = "url('Cubes/"+ randDiceNum (maxDice) +".jpg')";
+				document.getElementById("gameBord").appendChild(Dice);
+
+				this.getId = function() { return id; }
+				this.getWidth = function() { return diceWidth; }
+				this.getTop  = function() { 
+					var res = parseInt( document.getElementById(id).style.top.split('px')[0] ); 
+					return res; 
+				}
+				this.getLeft = function() { return parseInt(document.getElementById(id).style.left.split('px')[0]); }
+				this.setTop  = function(val) { Dice.style.top  = val + "px"; }
+				this.setLeft = function(val) { Dice.style.left  = val + "px"; }
+				
+				this.diceScore = 0;
+
+			}
+			
+			function gameStart () {
+				
+				var dices = Array ( new Dice(0, 0, 	 "dice1"),
+									new Dice(60, 0,  "dice2"),
+									new Dice(120, 0, "dice3") );
+
+				gameStart.dropDices = function () {
+					var interval = 100;
+					var i = 0;
+					var borderX = parseInt(document.getElementById("gameBord").style.width.split('px')[0]);
+					var borderY = parseInt(document.getElementById("gameBord").style.height.split('px')[0]);
+					var stepJump = 100;
+				
+					var myScore = 0;
+					var maxMove = 10;
+					
+					function myCicle( currentDice ){
+						document.getElementById("score").innerHTML = "<b>Ваш результат: </b>";
+						document.getElementById("drop_cube").disabled = true;
+						var objX = parseInt(document.getElementById(currentDice.getId()).style.top.split('px')[0]);
+						var objY = parseInt(document.getElementById(currentDice.getId()).style.left.split('px')[0]);
+	
+						var direct = randDiceNum(maxDir);
+						
+						if ( i < maxMove)
+						{
+							objX = parseInt(document.getElementById(currentDice.getId()).style.top.split('px')[0]);
+							objY = parseInt(document.getElementById(currentDice.getId()).style.left.split('px')[0]);
+							switch(direct) {
+								case 1:
+									(objY - stepJump - 5) < 0 ? objY += stepJump : objY -= stepJump;
+								break;
+								case 2:
+									(objX + stepJump * 2) > borderX ? objX -= stepJump / 2: objX += stepJump;
+								break;
+								case 3:
+									(objY + stepJump * 2) > borderY ? objY -= stepJump / 2: objY += stepJump;
+								break;
+								case 4:
+									(objX - stepJump - 5) < 0 ? objX += stepJump : objX -= stepJump;
+								break;
+							}
+							i++;
+							currentDice.diceScore = randDiceNum(maxDice);
+							document.getElementById(currentDice.getId()).style.left = objX + "px";
+							document.getElementById(currentDice.getId()).style.top  = objY + "px";
+							document.getElementById(currentDice.getId()).style.background = "url('Cubes/"+ currentDice.diceScore +".jpg')";
+							
+							( direct % 2 == 0 && interval > 100 ) ? interval -= 30 : interval += 20;
+							
+							setTimeout(function(){myCicle( currentDice )}, interval);
+						}
+						if (i == maxMove) {
+							document.getElementById("score").innerHTML = "<b>Ваш результат: </b>" + (dices[0].diceScore + dices[1].diceScore + dices[2].diceScore);
+							document.getElementById("drop_cube").disabled = false;
+							
+							for (var j = 0; j < dices.length - 1; j++) {
+								
+								while ( (dices[j].getTop() < (dices[j+1].getTop() +  + dices[j].getWidth()) && dices[j].getTop() >= dices[j+1].getTop())
+										&& (dices[j].getLeft() < (dices[j+1].getLeft() + dices[j].getWidth()) && dices[j].getLeft() >= dices[j+1].getLeft())) {
+									dices[j].setTop( dices[j].getTop() + 6 );
+									dices[j].setLeft( dices[j].getLeft() + 6 );
+								}
+							}
+						}
+					}
+					
+					for (var j = 0; j < dices.length; j++) {
+						myCicle(dices[j]);
+					}
+				}
+			}
+			
+		
+		</script>
+
+		<input type="button" value="Кинути кубіки"  id="drop_cube" onclick="gameStart.dropDices ()">
+
+		<div id="gameBord" style="position: relative; width: 668px; height: 548px;">
+		</div>	
+
+	</body>
+</html>

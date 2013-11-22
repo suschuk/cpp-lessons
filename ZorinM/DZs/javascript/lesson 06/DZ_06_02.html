@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<!--
+		<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+		-->
+	</head>
+	
+	<body style="background: #000 url(SunSystem/bg2.jpg); background-size:1500px 1200px ; background-repeat:no-repeat;">
+	<!--
+		<b>Завдання 6.2</b><br />
+		Написати спрощену модель сонячної системи. В центрі сонце, навколо неї по еліптичній орбіті обертаються планети. Навколо планети обертається по окружності супутник. Крім того, навколо поточного курсора миші також обертається 1-2 об’єкта <br />
+		<br />
+		<span id="elemToMove" style="position: absolute; left: 0px; top: 0px;">o</span>
+		<span id="elemToMove2" style="position: absolute; left: 0px; top: 0px;">x</span>
+	-->
+
+		<script type="text/javascript">
+
+			function getWidth() {
+				if(self.innerWidth) 
+					return self.innerWidth;
+				else if (document.documentElement && document.documentElement.clientHeight)
+					return document.documentElement.clientWidth;
+				else if(document.body)
+					return document.body.clientWidth;
+				
+				return 0;
+			}
+
+			function getHeight() {
+				if(self.innerHeight) 
+					return self.innerHeight;
+				else if (document.documentElement && document.documentElement.clientWidth)
+					return document.documentElement.clientHeight;
+				else if(document.body)
+					return document.body.clientHeight;
+				
+				return 0;
+			}
+
+			//var R1 = 380, R2 = 140, r1 = 50,
+			var a = 0,                // угол (в радианах) 
+			da = Math.PI/360;   // приращение угла 
+			//delay = 10;           // задержка (в мсек.) 
+			var x0 = getWidth() / 2, y0 = getHeight() / 2;
+			
+			var Sun = document.createElement ('img');
+			Sun.style.position = "absolute";
+			Sun.style.width = 50 + "px";
+			Sun.style.left = x0 + "px";
+			Sun.style.top  = y0 + "px";
+			Sun.src  = "SunSystem/Sun.png";
+			document.body.appendChild(Sun);
+			
+			function Planet (name, r, delay, size) {
+				var Planet = document.createElement ('img');
+				Planet.setAttribute("id", name);
+				this.getId = function() { return name; }
+				this.R1 = r;
+				this.R2 = (r * getHeight() / 2) / (getWidth() / 2 ); // getWidth() / 2, y0 = getHeight() / 2
+				this.delay = delay;
+				Planet.style.position = "absolute";
+				Planet.style.width = size + "px";
+				Planet.src  = "SunSystem/"+name+".png";
+				document.body.appendChild(Planet);
+			}
+			
+			function moveElem(planet, satellites ) {
+				var x1 = x0 + planet.R1 * Math.cos(a/planet.delay);
+				var y1 = y0 + planet.R2 * Math.sin(a/planet.delay);    
+				
+				document.getElementById(planet.getId()).style.left = x1 + "px";
+				document.getElementById(planet.getId()).style.top  = y1 + "px";    
+
+				if (satellites.length != 0){
+					for (var i = 0; i < satellites.length; i++) {
+						document.getElementById(satellites[i].getId()).style.left = x1 - satellites[i].R1 * Math.cos(a) + "px";
+						document.getElementById(satellites[i].getId()).style.top  = y1 - satellites[i].R1 * Math.sin(a) + "px";
+					}
+				}
+				
+				a+=da;
+				
+				setTimeout (function(){moveElem( planet, satellites )}, planet.delay);
+			}
+
+
+		var Mercury = new Planet ("Mercury", 80, 3, 12);
+		moveElem(Mercury, 0);
+		var Venus = new Planet ("Venus", 140, 4, 20);
+		moveElem(Venus, 0);
+		var EarthSatelites = Array ( new Planet ("Moon", 50, 1, 10) );
+		var Earth = new Planet ("Earth", 220, 6, 20);
+		moveElem(Earth, EarthSatelites);
+		var Mars = new Planet ("Mars", 280, 9, 18);
+		moveElem(Mars, 0);
+		var Jupiter = new Planet ("Jupiter", 350, 15, 50);
+		moveElem(Jupiter, 0);
+		var Saturn = new Planet ("Saturn", 440, 25, 45);
+		moveElem(Saturn, 0);
+		var Uranus = new Planet ("Uranus", 500, 35, 10);
+		moveElem(Uranus, 0);
+		var Neptune = new Planet ("Neptune", 550, 45, 11);
+		moveElem(Neptune, 0);
+		
+		</script>
+
+
+	</body>
+</html>
