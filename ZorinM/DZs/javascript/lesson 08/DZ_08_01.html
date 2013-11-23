@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<!--
+		<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+		-->
+		<style>
+			body {
+				font-family: Arial;
+				font-size: 14px;
+				background: #CCCCB2;
+			}
+			div#container {
+				width: 450px;
+				height: 600px;
+				text-align: center;
+			}
+			#span_data {
+				padding-left: 50px;
+				width: 50px;
+				height: 21px;
+				text-vertical-align: bottom;
+				float: left;
+			}
+			#name, #email, #url {
+				width: 200px;
+			}
+			div#container2 {
+				text-align: center;
+				width: 450px;
+				padding-left: auto;
+				padding-right: auto;
+				/*border: 1px solid red;*/
+			}
+		</style>
+		<script type="text/javascript">
+		
+			var ifName = false, ifEmail = false, ifURL = false;
+			//document.getElementById("send").disabled = false;
+			
+			function clearForm() {
+				document.getElementById("name").value = "";
+				document.getElementById("resName").innerHTML = "";
+				document.getElementById("email").value = "";
+				document.getElementById("resEmail").innerHTML = "";
+				document.getElementById("url").value = "";
+				document.getElementById("resURL").innerHTML = "";
+				document.getElementById("Message").value = "";
+				ifName = ifEmail = ifURL = false;
+			}
+			
+			function isComplite () {
+				if (ifName && ifEmail && ifURL)
+					document.getElementById("send").disabled = false;
+				else
+					document.getElementById("send").disabled = true;
+			}
+			
+			function nameValid() {
+				var regName = /^([a-zA-Z ]){2,30}$/;
+				
+				if ( regName.test(document.getElementById("name").value)){
+					ifName = true;
+					isComplite ();
+					document.getElementById("resName").innerHTML = "ok";
+				}
+				else if (document.getElementById("name").value.length > 1)
+					document.getElementById("resName").innerHTML = "wrong name";
+				else 
+					document.getElementById("resName").innerHTML = "";
+				//document.getElementById("resName").innerHTML = document.getElementById("name").value;
+			}
+			
+			function nameEmail() {
+				var regEmail =/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/igm;;
+				
+				if ( regEmail.test(document.getElementById("email").value)) {
+					document.getElementById("resEmail").innerHTML = "ok";
+					ifEmail = true;
+					isComplite ();
+				}
+				else if (document.getElementById("email").value.length > 1)
+					document.getElementById("resEmail").innerHTML = "wrong email";
+				else 
+					document.getElementById("resEmail").innerHTML = "";
+			}
+			
+			function nameURL() {
+				var regURL =/(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+				
+				if ( regURL.test(document.getElementById("url").value)) {
+					document.getElementById("resURL").innerHTML = "ok";
+					ifURL = true;
+					isComplite ();
+				}
+				else if (document.getElementById("url").value.length > 1)
+					document.getElementById("resURL").innerHTML = "wrong URL";
+				else 
+					document.getElementById("resURL").innerHTML = "";
+			}
+			
+			
+		</script>
+	</head>
+	
+	<body onload="isComplite()">
+	
+			<h1>My Form</h1>
+			<form name="validate">
+				<div id="span_data">Name: 	</div>	<input type="text" id="name"  oninput="nameValid()" name="name"> <span id="resName"></span></input><br />
+				<div id="span_data">E-mail: </div>	<input type="text" id="email" oninput="nameEmail()"  name="email"></input>	<span id="resEmail"></span><br />
+				<div id="span_data">url: 	</div>	<input type="text" id="url"  oninput="nameURL()"name="url"></input>	<span id="resURL"></span><br />
+			</form>
+			
+	
+			<h5>Message</h5>
+			<textarea rows="10" cols="40" id="Message">
+			</textarea>
+			<br /><br />
+			<input type="button" id="send" value="Send" > 
+			<input type="button" name="clear" onclick="clearForm()" value="Clear"> 
+		
+
+	</body>
+</html>

@@ -12,6 +12,8 @@ jQuery
 	
 =============================================================
 JavaScript
+
+
 	lessons06 (animation)
 	https://github.com/suschuk/cpp-lessons/tree/master/ZorinM/DZs/javascript/lesson%2006
 	DZ_06_02 - Solar system

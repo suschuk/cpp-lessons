@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<!--
+		<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+		-->
+		<style>
+			body {
+				font-family: Arial;
+				font-size: 14px;
+			}
+		</style>
+	</head>
+	
+	<body>
+	
+		<b>Завдання 9.1</b><br />
+		Написати тестову систему, що містить мінімум 4 питання. В кожному питанні передбачити різні варіанти правильної відповіді з використанням наступних елементів управління: radio, checkbox, select (випадаючим та простим списком). Передбачити можливість отримання результату здачі тесту та очистки тесту.
+		<br />
+		
+			
+		<h3>Tест на кмітливість</h3>
+		
+		<form name="test">
+			<h4>1. Яка зараз пора року?</h4>
+			<input type="radio" name="season" value="winter" />Зима<br />
+			<input type="radio" name="season" value="spring" />Весна<br />
+			<input type="radio" name="season" value="sammer" />Літо<br />
+			<input type="radio" name="season" value="autumn" />Осінь<br />
+			<hr />
+			<span id="res1"> </span>
+
+			<h4>2. Які птахи взимку відлітають в теплі краї?</h4>
+			<input type="checkbox" name="birdth" />Ворони<br />
+			<input type="checkbox" name="birdth" />Шпаки<br />
+			<input type="checkbox" name="birdth" />Снігури<br />
+			<input type="checkbox" name="birdth" />Ластівки<br />
+			<input type="checkbox" name="birdth" />Сіниці<br />
+			<hr />
+			<span id="res2"> </span>
+
+			<h4>4. Які квіти з’являются найпершими?</h4>
+			<select name="flower">
+				<option>Троянди</option>
+				<option>Проліски</option>
+				<option>Волошки</option>
+				<option>Соняшники</option>
+			</select>
+			<hr />
+			<span id="res3"> </span>
+			
+			<h4>5. Весна... (виберіть правельні відповіді)?</h4>
+			<select name="spring" multiple="multiple">
+				<option>Бруньки на деревах</option>
+				<option>Опадає листя</option>
+				<option>День стає довше</option>
+				<option>Птахи відлітають на південь</option>
+			</select>
+			<hr />
+			<span id="res4"> </span>
+			
+			
+			<br /><input type="button" value="Відповісти" onclick="myChoise()">
+		</form>
+		<br /><br />
+		
+		<script type="text/javascript">
+			function myChoise() {
+				var i = 0;
+				var d = new Date();
+				var month = d.getMonth();
+				var answ1 = "";
+				var res1 = "", res2="", res3="";
+				for (i = 0; i < test.season.length; i++)
+					if (test.season[i].checked){
+						answ1 = test.season[i].value;
+						break;
+					}
+				// radio buttons		
+				switch (answ1) {
+					case "winter":
+						(month == 11 && month <= 1) ? res1="вірно" : res1="невірно";
+					break;
+					case "spring":
+						(month >= 2  && month <= 4) ? res1="вірно" : res1="невірно";
+					break;
+					case "sammer":
+						(month >= 5 && month <= 7) ? res1="вірно" : res1="невірно";
+					break;
+					case "autumn":
+						(month >= 8 && month <= 10) ? res1="вірно" : res1="невірно";
+					break;
+					default:
+						res1="не вибрано жодного варіанту"
+				}		
+				document.getElementById("res1").innerHTML = res1;
+				
+				// checkbuttons		
+				if (test.birdth[1].checked && test.birdth[3].checked)
+					res2="вірно"; 
+				else 
+					res2="невірно";
+				alert (" i = " + i	+ " test.birdth.length = " + (test.birdth.length - 1));
+					
+				document.getElementById("res2").innerHTML = res2;
+				
+				// select 1
+				if (test.flower.selectedIndex == 1)
+					res3="вірно"; 
+				else 
+					res3="невірно";
+					
+				document.getElementById("res3").innerHTML = res3;
+
+				// select 2
+				if (test.spring[0].selected == true && test.spring[2].selected == true)
+					res4="вірно"; 
+				else 
+					res4="невірно";
+				document.getElementById("res4").innerHTML = res4;
+			}
+		</script>
+
+	</body>
+</html>
