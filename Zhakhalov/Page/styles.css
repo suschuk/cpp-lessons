@@ -1,0 +1,121 @@
+
+body
+{
+    margin: auto;
+    width: 75%;
+    min-width: 480px;
+}
+
+.hover
+{
+    font-weight:bold ;
+}
+
+#menu-div
+{
+    height: 30px;
+}
+
+#menu-list
+{
+    margin: 0px;;
+    padding: 0px;
+}
+
+.menu-item
+{
+    float:left;
+    margin: auto;
+    list-style-type:none;
+    text-align: center;
+    line-height: 30px;
+}
+
+.sub-menu
+{
+    background-color: #ff7f50;
+    display: none;
+    text-align: center;
+    line-height: 30px;
+    position: absolute;
+}
+
+.sub-menu-item
+{
+    font-weight: normal;
+    list-style-type:disc;
+    z-index: 100;
+}
+
+.sub-menu-item-hover
+{
+    font-weight: bold;
+}
+
+#tab-div
+{
+    background:url(graphics/tab-back.png);
+    background-repeat: repeat-x;
+    height: 30px;
+}
+
+#tab-list
+{
+    padding: 0px;
+}
+
+.tab-item
+{
+    float:left;
+    margin: auto;
+    text-align: center;
+    line-height: 30px;
+    list-style-type:none;
+
+}
+
+.tab-close
+{
+    background-image:url(graphics/left-tab-close.png), url(graphics/right-tab-close.png), url(graphics/tab-close.png);
+    background-repeat: no-repeat, no-repeat, repeat-x;
+    background-position: top left, top right;
+    height: 30px;
+}
+
+.tab-open
+{
+    background-image:url(graphics/left-tab-open.png), url(graphics/right-tab-open.png),  url(graphics/tab-open.png);
+    background-repeat: no-repeat, no-repeat, repeat-x;
+    background-position: top left, top right, top;
+    height: 30px;
+}
+
+#container
+{
+    background-color: #D7FFC6;
+    background-image:url(graphics/container-right.png), url(graphics/container-left.png), url(graphics/container-bottom.png);
+    background-repeat: repeat-y, repeat-y, repeat-x;
+    background-position:  right, left, bottom;
+    padding: 10px;
+}
+
+#login-form
+{
+
+}
+
+#user-hint
+{
+    color:red;
+}
+
+.good-text
+{
+    background-color: #C0FFC0;
+}
+
+.bad-text
+{
+    background-color: #FFC0C0;
+}
+
