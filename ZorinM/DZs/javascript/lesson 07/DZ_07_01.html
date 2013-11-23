@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<!--
+		<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+		-->
+	</head>
+	
+	<body">
+	
+		<b>Завдання 7.1</b><br />
+		Створити сторінку, яка містить меню, що дозволяє працювати з поточним вікном браузера. Реалізувати переміщення поточного вікна вверх, вправо, вліво, вниз, збільшення та зменшення його розмірів.<br />
+		<br />
+		Крім того, ваша головна сторінка повинна змінювати свій фон в залежності від типу браузера. Наприклад, для IE фон сторінки буде синій, для Opera – червоний, а для Firefox – жовтий.<br />
+
+
+		
+		<script type="text/javascript">
+			function getWidth() {
+				if(myWindow.innerWidth) 
+					return myWindow.innerWidth;
+				else if (document.documentElement && document.documentElement.clientHeight)
+					return document.documentElement.clientWidth;
+				else if(document.body)
+					return document.body.clientWidth;
+				
+				return 0;
+			}
+
+			function getHeight() {
+				if(myWindow.innerHeight) 
+					return myWindow.innerHeight;
+				else if (document.documentElement && document.documentElement.clientWidth)
+					return document.documentElement.clientHeight;
+				else if(document.body)
+					return document.body.clientHeight;
+				
+				return 0;
+			}
+			
+			
+			function moveRight() {
+				var x = myWindow.screenLeft;
+				var y = myWindow.screenTop;
+				x -= 10;
+				myWindow.moveTo( x , y );
+			}
+			function moveLeft() {
+				var x = myWindow.screenLeft;
+				var y = myWindow.screenTop;
+				x += 10;
+				myWindow.moveTo( x , y );
+			}
+			
+			function openWindow() { 
+				var myUrl = ""; 
+				myWindow=window.open(myUrl, "myWindow", "width=200,height=100,resizable=no,scrollbars=no,menubar=no"); 
+			}
+			
+			
+			// зміна кольору в залежності від браузера
+			if (navigator.userAgent.search(/Chrome/i) != -1)
+				document.body.style.background = "#9F9";
+			else if (navigator.userAgent.search(/Firefox/i) != -1)
+				document.body.style.background = "#F99";
+			else if (navigator.userAgent.search(/ie/i) != -1)
+				document.body.style.background = "#99F";
+			
+			//document.write("<b>userAgent: 		</b>" + navigator.userAgent			+"<hr />");
+			
+		</script>
+		
+		<input type="button" value="New window" onClick="openWindow()"> 
+		<input type="button" value="Close window" onClick="myWindow.close()"><br /><br />
+		<input type="button" onclick="myWindow.moveBy(0,-10)" value="move Up"><br />
+		<input type="button" onclick="moveRight()" value="move right"> <input type="button" onclick="moveLeft()" value="move left"><br />
+		<input type="button" onclick="myWindow.moveBy(0, 10)" value="move Down"><br /><br />
+		
+		<input type="button" onclick="myWindow.resizeBy(50, 0);" value="збільшити ширину"> 
+		<input type="button" onclick="myWindow.resizeBy(-50, 0);" value="зменьшити ширину"><br />
+		<input type="button" onclick="myWindow.resizeBy(0, 50);" value="збільшити висоту"> 
+		<input type="button" onclick="myWindow.resizeBy(0, -50);" value="зменьшити висоту"><br />
+		
+	</body>
+</html>
