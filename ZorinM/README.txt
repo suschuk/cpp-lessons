@@ -14,6 +14,18 @@ jQuery
 JavaScript
 
 
+	lessons09 
+	DZ_09_01 - form, simplest iq test ))
+	https://github.com/suschuk/cpp-lessons/tree/master/ZorinM/DZs/javascript/lesson%2009
+
+	lessons08 
+	DZ_08_01 - login, e-mail, url validation form
+	https://github.com/suschuk/cpp-lessons/tree/master/ZorinM/DZs/javascript/lesson%2008
+	
+	lessons07 
+	DZ_07_01 - browser control
+	https://github.com/suschuk/cpp-lessons/tree/master/ZorinM/DZs/javascript/lesson%2007
+	
 	lessons06 (animation)
 	https://github.com/suschuk/cpp-lessons/tree/master/ZorinM/DZs/javascript/lesson%2006
 	DZ_06_02 - Solar system
