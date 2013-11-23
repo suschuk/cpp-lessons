@@ -99,3 +99,23 @@ body
     padding: 10px;
 }
 
+#login-form
+{
+
+}
+
+#user-hint
+{
+    color:red;
+}
+
+.good-text
+{
+    background-color: #C0FFC0;
+}
+
+.bad-text
+{
+    background-color: #FFC0C0;
+}
+
